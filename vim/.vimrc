@@ -52,8 +52,8 @@ endif
 
 " Leo's configs
 syntax on
-
-set bg=light
+set autoindent
+"set bg=light
 set nocompatible
 filetype plugin on
 set noerrorbells
