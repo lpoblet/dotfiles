@@ -173,6 +173,9 @@ bar {
 # Bandit's begin
 #
 
+# NumLock On
+exec_always --no-startup-id numlockx on
+
 # Set wallpaper
 exec_always feh --bg-scale ~/Pictures/wallpaper.jpg
 
