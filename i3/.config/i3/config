@@ -14,7 +14,6 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 10
-font pango:System San Francisco Display 13
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -99,10 +98,10 @@ set $ws1 "a"
 set $ws2 "s"
 set $ws3 "d"
 set $ws4 "f"
-set $ws5 "u"
+set $ws5 "u: "
 set $ws6 "i"
-set $ws7 "o"
-set $ws8 "p"
+set $ws7 "o: "
+set $ws8 "p: "
 #set $ws9 "9"
 #set $ws10 "0"
 
@@ -189,6 +188,10 @@ bar {
 #
 # Bandit's begin
 
+# font downloaded from https://github.com/supermarin/YosemiteSanFranciscoFont
+# also installed tool lxappearance to change font of gtk apps
+# requires to edit files ~/.gtkrc-2.0 and ~/.config/gtk-3.0/settings.ini
+font pango:System San Francisco Display 13
 
 # NumLock On
 exec_always --no-startup-id numlockx on
@@ -220,8 +223,8 @@ workspace $ws8 output HDMI-0
 # Use 'xprop | grep CLASS' to find the class of any program
 assign [class="Firefox"] $ws5
 assign [class="Brave-browser"] $ws5
-assign [class="atomic"] $ws8
 assign [class="Hexchat"] $ws7
+assign [class="atomic"] $ws8
 
 # enter fullscreen mode for the focused container
 #bindsym $mod+f fullscreen toggle
@@ -249,7 +252,12 @@ bindsym XF86AudioPause exec playerctl pause
 # excec_always appName # executes on restart too
 
 # split in horizontal/vertical toggle
-bindsym $mod+v split toggle 
+bindsym $mod+v split toggle
+
+# Fonts for i3status bar and more
+# https://github.com/FortAwesome/Font-Awesome/releases
+# https://fontawesome.com/cheatsheet
+
 
 #
 # Bandit's end
