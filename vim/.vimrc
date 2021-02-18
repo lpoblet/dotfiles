@@ -60,3 +60,4 @@ set noerrorbells
 set smartindent
 set number relativenumber
 set incsearch
+set hidden
