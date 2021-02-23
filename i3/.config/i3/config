@@ -36,7 +36,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+c exec dmenu_run
+bindsym $mod+d exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -87,7 +87,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+b focus parent
+#bindsym $mod+b focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -96,7 +96,7 @@ bindsym $mod+b focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "a"
 set $ws2 "s"
-set $ws3 "d"
+#set $ws3 "d" commented as this is d-menu
 set $ws4 "f"
 set $ws5 "u: "
 set $ws6 "i"
@@ -108,7 +108,7 @@ set $ws8 "p: "
 # switch to workspace
 bindsym $mod+a workspace $ws1
 bindsym $mod+s workspace $ws2
-bindsym $mod+d workspace $ws3
+#bindsym $mod+d workspace $ws3 commented as this is d-menu
 bindsym $mod+f workspace $ws4
 bindsym $mod+u workspace $ws5
 bindsym $mod+i workspace $ws6
@@ -120,7 +120,7 @@ bindsym $mod+p workspace $ws8
 # move focused container to workspace
 bindsym $mod+Shift+a move container to workspace $ws1
 bindsym $mod+Shift+s move container to workspace $ws2
-bindsym $mod+Shift+d move container to workspace $ws3
+#bindsym $mod+Shift+d move container to workspace $ws3 commented as this is d-menu
 bindsym $mod+Shift+f move container to workspace $ws4
 bindsym $mod+Shift+u move container to workspace $ws5
 bindsym $mod+Shift+i move container to workspace $ws6
@@ -130,7 +130,7 @@ bindsym $mod+Shift+p move container to workspace $ws8
 #bindsym $mod+Shift+0 move container to workspace $ws10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+t reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -212,7 +212,7 @@ exec_always xrandr --output DP-1 --primary
 # Force workspaces to load in correct monitor (after previous line changed the order)
 workspace $ws1 output DP-1
 workspace $ws2 output DP-1
-workspace $ws3 output DP-1
+#workspace $ws3 output DP-1 commented as this is d-menu
 workspace $ws4 output DP-1
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
@@ -223,6 +223,7 @@ workspace $ws8 output HDMI-0
 # Use 'xprop | grep CLASS' to find the class of any program
 assign [class="Firefox"] $ws5
 assign [class="Brave-browser"] $ws5
+assign [class="Joplin"] $ws2
 assign [class="Hexchat"] $ws7
 assign [class="atomic"] $ws8
 
