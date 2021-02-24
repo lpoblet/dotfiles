@@ -36,11 +36,11 @@ battery all {
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "NZ: %Y-%m-%d %H:%M:%S"
 }
 
 tztime Baires{
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "BA: %Y-%m-%d %H:%M:%S"
 	timezone = "America/Buenos_Aires"
 }
 
