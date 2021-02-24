@@ -94,10 +94,10 @@ bindsym $mod+space focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "a"
-set $ws2 "s"
+set $ws1 "a: >_"
+set $ws2 "s: >_"
 #set $ws3 "d" commented as this is d-menu
-set $ws4 "f"
+set $ws4 "f: >_"
 set $ws5 "u: "
 set $ws6 "i"
 set $ws7 "o: "
@@ -163,28 +163,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-	# left monitor
-	output DP-1
-        
-	status_command i3status
-	
-	# remove tray icons (TODO: prevent them from loading in first place)
-	tray_output none
-}
-
-bar {
-	# right monitor
-	output HDMI-0
-
-	status_command i3status
-
-	# remove tray icons (TODO: prevent them from loading in first place)
-	tray_output none
-}
-
 #
 # Bandit's begin
 
@@ -195,6 +173,9 @@ font pango:System San Francisco Display 13
 
 # NumLock On
 exec_always --no-startup-id numlockx on
+
+# Compton
+exec compton -f
 
 # i3lock
 #bindsym $mod+Shift+x exec i3lock --no-unlock-indicator --color=000000 --ignore-empty-password --show-failed-attempts
@@ -259,6 +240,66 @@ bindsym $mod+v split toggle
 # https://github.com/FortAwesome/Font-Awesome/releases
 # https://fontawesome.com/cheatsheet
 
+set $bg-color			#2f343f
+set $inactive-bg-color		#2f343f
+set $text-color			#f3f4f5
+set $inactive-text-color	#676E7D
+set $urgent-bg-color		#E53935
+
+# windows colors
+# 			border			backgound		text			indicator
+client.focused		$bg-color		$bg-color		$text-color		#00ff00
+client.unfocused	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#00ff00
+client.focused_inactive	$inactive-bg-color	$inactive-bg-color	$inactive-text-color	#00ff00
+client.urgent		$urgent-bg-color	$urgent-bg-color	$text-color		#00ff00
+
+hide_edge_borders both
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+	# left monitor
+	output DP-1
+        
+	#status_command i3status
+	status_command i3blocks -c ~/.config/i3blocks/i3blocks_left_mon.conf
+
+	position top
+	
+	# remove tray icons (TODO: prevent them from loading in first place)
+	tray_output none
+
+	colors {
+		background $bg-color
+		separator #757575
+		#			border			background		text
+		focused_workspace	$bg-color		$bg-color		$text-color
+		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+		urgent_workspace	$urgent-bg-color	$urgent-bg-color	$text-color
+	}
+}
+
+bar {
+	# right monitor
+	output HDMI-0
+
+	#status_command i3status
+	status_command i3blocks -c ~/.config/i3blocks/i3blocks_right_mon.conf
+
+	position top
+
+	# remove tray icons (TODO: prevent them from loading in first place)
+	tray_output none
+
+	colors {
+		background $bg-color
+		separator #757575
+		#			border			background		text
+		focused_workspace	$bg-color		$bg-color		$text-color
+		inactive_workspace	$inactive-bg-color	$inactive-bg-color	$inactive-text-color
+		urgent_workspace	$urgent-bg-color	$urgent-bg-color	$text-color
+	}
+}
 
 #
 # Bandit's end
