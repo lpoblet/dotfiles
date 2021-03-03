@@ -99,7 +99,7 @@ set $ws1 "a: "
 set $ws2 "s: "
 #set $ws3 "d" commented as this is d-menu
 set $ws4 "y: "
-set $ws5 "u: "
+set $ws5 "u: "
 set $ws6 "i: "
 set $ws7 "o: "
 set $ws8 "p: "
@@ -184,7 +184,7 @@ exec compton -f
 # i3lock
 #bindsym $mod+Shift+x exec i3lock --no-unlock-indicator --color=000000 --ignore-empty-password --show-failed-attempts
 exec_always --no-startup-id xautolock -time 10 -locker "i3lock --ignore-empty-password --show-failed-attempts --image=Pictures/screensaver.png -t -n" -killtime 25 -killer "systemctl suspend" &
-bindsym $mod+Shift+x exec i3lock --ignore-empty-password --show-failed-attempts --image=Pictures/screensaver.png -t
+bindsym $mod+x exec i3lock --ignore-empty-password --show-failed-attempts --image=Pictures/screensaver.png -t
 
 # Set wallpaper
 exec_always feh --bg-scale ~/Pictures/debian.png
