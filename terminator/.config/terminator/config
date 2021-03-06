@@ -1,0 +1,58 @@
+[global_config]
+  focus = system
+  inactive_color_offset = 0.7083333333333334
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.7
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    show_titlebar = False
+    scrollbar_position = hidden
+    exit_action = hold
+    use_custom_command = True
+    custom_command = neofetch ; bash
+[layouts]
+  [[default]]
+    [[[child0]]]
+      type = Window
+      parent = ""
+      order = 0
+      position = 1923:2
+      maximised = False
+      fullscreen = False
+      size = 1911, 1039
+      title = leo@leo-pc: ~
+      last_active_term = b0e7cee9-58a0-4e70-a957-60932794edca
+      last_active_window = True
+    [[[child1]]]
+      type = HPaned
+      parent = child0
+      order = 0
+      position = 1135
+      ratio = 0.5954879328436516
+    [[[terminal2]]]
+      type = Terminal
+      parent = child1
+      order = 0
+      profile = default
+      uuid = b0e7cee9-58a0-4e70-a957-60932794edca
+    [[[child3]]]
+      type = VPaned
+      parent = child1
+      order = 1
+      position = 596
+      ratio = 0.5764023210831721
+    [[[terminal4]]]
+      type = Terminal
+      parent = child3
+      order = 0
+      profile = default
+      uuid = a78b5784-1cc9-49e7-99de-2bb23b7963ba
+    [[[terminal5]]]
+      type = Terminal
+      parent = child3
+      order = 1
+      profile = default
+      uuid = a1c6179d-9cdc-498a-92e6-a63c51b63d4c
+[plugins]
