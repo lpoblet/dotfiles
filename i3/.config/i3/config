@@ -212,6 +212,7 @@ assign [class="Firefox"] $ws2
 assign [class="Joplin"] $ws5
 assign [class="Brave-browser"] $ws6
 assign [class="Hexchat"] $ws7
+assign [class="Spotify"] $ws7
 assign [class="atomic"] $ws8
 
 # enter fullscreen mode for the focused container
