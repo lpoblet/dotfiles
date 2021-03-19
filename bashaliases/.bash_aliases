@@ -4,7 +4,7 @@ alias la='ls -A'
 alias l='ls -CF'
 
 # rm
-alias rm='rm-i'
+alias rm='rm -i'
 
 # NordVPN $ ip info
 alias nords='nordvpn status'
