@@ -31,3 +31,10 @@ function nordr() {
 function getmyipinfo() {
 	curl ipinfo.io/ip
 }
+
+# Git
+alias gits='git status'
+alias gita='git add .'
+#alias gitc='git commit -m' # find how to prompt for comment
+alias gitp='git push'
+
