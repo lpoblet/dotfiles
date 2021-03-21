@@ -6,6 +6,12 @@ alias l='ls -CF'
 # rm
 alias rm='rm -i'
 
+# neofetch
+alias nf='neofetch'
+
+# source bashrc
+alias src='source ~/.bashrc'
+
 # NordVPN $ ip info
 alias nords='nordvpn status'
 alias nordc='nordvpn connect NZ'
