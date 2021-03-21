@@ -34,6 +34,7 @@ function getmyipinfo() {
 
 # Git
 alias gits='git status'
+alias gitd='git diff'
 alias gita='git add .'
 #alias gitc='git commit -m' # find how to prompt for comment
 alias gitp='git push'
