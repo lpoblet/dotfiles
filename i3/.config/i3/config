@@ -199,7 +199,7 @@ exec_always xrandr --output DP-1 --primary
 workspace $ws1 output DP-1
 workspace $ws2 output DP-1
 #workspace $ws3 output DP-1 commented as this is d-menu
-#workspace $ws4 output DP-1
+workspace $ws3 output DP-1
 workspace $ws4 output HDMI-0
 workspace $ws5 output HDMI-0
 workspace $ws6 output HDMI-0
