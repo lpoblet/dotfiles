@@ -1,5 +1,5 @@
 # ls
-alias ll='ls -l'
+alias ll='ls -la'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -39,3 +39,6 @@ alias gita='git add .'
 #alias gitc='git commit -m' # find how to prompt for comment
 alias gitp='git push'
 
+# Python3
+alias python='python3'
+alias pip='pip3'
