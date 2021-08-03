@@ -9,6 +9,11 @@ alias rm='rm -i'
 # neofetch
 alias nf='neofetch'
 
+# mount
+alias mountb='sudo mount /dev/sdc2 /mnt/bucket/'
+alias mountp='sudo mount /dev/sde1 /mnt/playground/'
+alias mountw='sudo mount /dev/sda2 /mnt/windows/'
+
 # source bashrc
 alias src='source ~/.bashrc'
 
