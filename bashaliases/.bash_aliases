@@ -10,9 +10,9 @@ alias rm='rm -i'
 alias nf='neofetch'
 
 # mount
-alias mountb='sudo mount /dev/sdc2 /mnt/bucket/'
-alias mountp='sudo mount /dev/sde1 /mnt/playground/'
-alias mountw='sudo mount /dev/sda2 /mnt/windows/'
+alias mountb='sudo mount /dev/sdb2 /mnt/bucket/'
+alias mountp='sudo mount /dev/sdd1 /mnt/playground/'
+alias mountw='sudo mount /dev/sde2 /mnt/windows/'
 
 # source bashrc
 alias src='source ~/.bashrc'
@@ -43,6 +43,7 @@ alias gitd='git diff'
 alias gita='git add .'
 #alias gitc='git commit -m' # find how to prompt for comment
 alias gitp='git push'
+alias gitf='git fetch'
 
 # Python3
 alias python='python3'
