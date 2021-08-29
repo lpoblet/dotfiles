@@ -11,7 +11,7 @@ alias nf='neofetch'
 
 # mount
 alias mountb='sudo mount /dev/sdb2 /mnt/bucket/'
-alias mountp='sudo mount /dev/sdd1 /mnt/playground/'
+alias mountp='sudo mount /dev/sde1 /mnt/playground/'
 alias mountw='sudo mount /dev/sde2 /mnt/windows/'
 
 # source bashrc
