@@ -257,7 +257,7 @@ exec_always --no-startup-id xautolock -time 10 -locker "i3lock --ignore-empty-pa
 bindsym $mod+x exec i3lock --ignore-empty-password --show-failed-attempts --image=Pictures/screensaver.png -t
 
 # Set wallpaper
-exec_always feh --bg-scale ~/Pictures/debian.png
+exec_always feh --bg-scale ~/Pictures/debian2.jpg
 
 # Multi-monitor: Change monitore's order
 exec_always xrandr --output HDMI-0 --auto --right-of DP-1
@@ -311,6 +311,7 @@ workspace $ws10 output HDMI-0
 
 # Colour's variables
 set $bg-color			#2f343f
+set $bar-bg-color		#2f343f33
 set $inactive-bg-color		#2f343f
 set $text-color			#f3f4f5
 set $inactive-text-color	#676E7D
@@ -333,6 +334,7 @@ bar {
         
 	#status_command i3status
 	status_command i3blocks -c ~/.config/i3blocks/i3blocks_left_mon.conf
+	i3bar_command i3bar --transparency
 	
 	position top
 	
@@ -340,7 +342,7 @@ bar {
 	tray_output none
 
 	colors {
-		background $bg-color
+		background $bar-bg-color
 		separator #757575
 		#			border			background		text
 		focused_workspace	$bg-color		$bg-color		$text-color
@@ -355,14 +357,15 @@ bar {
 
 	#status_command i3status
 	status_command i3blocks -c ~/.config/i3blocks/i3blocks_right_mon.conf
-
+	i3bar_command i3bar --transparency
+	
 	position top
 
 	# remove tray icons (TODO: prevent them from loading in first place)
 	tray_output none
 
 	colors {
-		background $bg-color
+		background $bar-bg-color
 		separator #757575
 		#			border			background		text
 		focused_workspace	$bg-color		$bg-color		$text-color
