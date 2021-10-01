@@ -1,23 +1,40 @@
+# cp
+alias cp='cp -i'			# confirm before overwritting something
+
+# df
+alias df='df -h'			# human-readable sizes
+
+# free
+alias free='free -m'			# show sizes in MB
+
+# git
+alias gits='git status'
+alias gitd='git diff'
+alias gita='git add .'
+#alias gitc='git commit -m' # find how to prompt for comment
+alias gitp='git push'
+alias gitf='git fetch'
+
+# grep
+alias grep='grep --clolour=auto'
+alias egrep='egrep --clolour=auto'
+alias fgrep='fgrep --clolour=auto'
+
 # ls
 alias ll='ls -la'
 alias la='ls -A'
 alias l='ls -CF'
-
-# rm
-alias rm='rm -i'
-
-# neofetch
-alias nf='neofetch'
+alias ls='ls --color=auto'
 
 # mount
 alias mountb='sudo mount /dev/sdb2 /mnt/bucket/'
 alias mountp='sudo mount /dev/sde1 /mnt/playground/'
 alias mountw='sudo mount /dev/sde2 /mnt/windows/'
 
-# source bashrc
-alias src='source ~/.bashrc'
+# neofetch
+alias nf='neofetch'
 
-# NordVPN $ ip info
+# nordVPN $ ip info
 alias nords='nordvpn status'
 alias nordc='nordvpn connect NZ'
 alias nordar='nordvpn connect AR'
@@ -37,14 +54,13 @@ function getmyipinfo() {
 	curl ipinfo.io/ip
 }
 
-# Git
-alias gits='git status'
-alias gitd='git diff'
-alias gita='git add .'
-#alias gitc='git commit -m' # find how to prompt for comment
-alias gitp='git push'
-alias gitf='git fetch'
-
-# Python3
+# python3
 alias python='python3'
 alias pip='pip3'
+
+# rm
+alias rm='rm -i'
+
+# source bashrc
+alias src='source ~/.bashrc'
+
