@@ -61,3 +61,4 @@ set smartindent
 set number relativenumber
 set incsearch
 set hidden
+set ignorecase
