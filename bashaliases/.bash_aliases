@@ -11,14 +11,14 @@ alias free='free -m'			# show sizes in MB
 alias gits='git status'
 alias gitd='git diff'
 alias gita='git add .'
-#alias gitc='git commit -m' # find how to prompt for comment
+#alias gitc='git commit -m' 		# find how to prompt for comment
 alias gitp='git push'
 alias gitf='git fetch'
 
 # grep
-alias grep='grep --colour=auto'
-alias egrep='egrep --colour=auto'
-alias fgrep='fgrep --colour=auto'
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
 # ls
 alias ll='ls -la'
