@@ -16,9 +16,9 @@ alias gitp='git push'
 alias gitf='git fetch'
 
 # grep
-alias grep='grep --clolour=auto'
-alias egrep='egrep --clolour=auto'
-alias fgrep='fgrep --clolour=auto'
+alias grep='grep --colour=auto'
+alias egrep='egrep --colour=auto'
+alias fgrep='fgrep --colour=auto'
 
 # ls
 alias ll='ls -la'
