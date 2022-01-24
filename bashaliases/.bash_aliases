@@ -39,6 +39,7 @@ alias nf='neofetch'
 
 # nordVPN $ ip info
 alias nords='nordvpn status'
+alias nordset='nordvpn settings'
 alias nordc='nordvpn connect NZ'
 alias nordar='nordvpn connect AR'
 alias nordau='nordvpn connect AU'
