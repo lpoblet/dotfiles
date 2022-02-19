@@ -204,11 +204,8 @@ exec_always --no-startup-id numlockx on
 # Set wallpaper
 #exec_always feh --bg-scale ~/Pictures/debian.png
 
-# Multi-monitor: Change monitore's order
-#exec_always xrandr --output HDMI-0 --auto --right-of DP-1
-
-# Set DP-1 (left monitor) as primary display
-#exec_always xrandr --output DP-1 --primary
+# Single-monitor: Change monitore's order
+exec_always xrandr --output Virtual-1 --mode 1920x1080
 
 # Force workspaces to load in correct monitor (after previous line changed the order)
 #workspace $ws1 output DP-1
