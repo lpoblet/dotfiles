@@ -12,7 +12,7 @@
     scrollbar_position = hidden
     exit_action = hold
     use_custom_command = True
-    custom_command = neofetch ; bash
+    custom_command = bash
 [layouts]
   [[default]]
     [[[child0]]]
