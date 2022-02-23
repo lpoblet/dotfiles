@@ -23,6 +23,10 @@ set ttyfast                 " Speed up scrolling in Vim
 " set noswapfile            " disable creating swap file
 " set backupdir=~/.cache/vim " Directory to store backup files.
 
+" Install VimPlug with this command:
+" sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+"       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+" Once installed enter nvim and run :PlugInstall
 call plug#begin('~/.vim/plugged')
 " Plugin Section
  Plug 'vim-airline/vim-airline'
