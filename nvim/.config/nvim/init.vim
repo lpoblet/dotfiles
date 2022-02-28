@@ -31,17 +31,24 @@ call plug#begin('~/.vim/plugged')
 " Plugin Section
  Plug 'vim-airline/vim-airline'
  Plug 'vim-airline/vim-airline-themes'
- Plug 'tyru/open-browser.vim' " opens url in browser
- Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
+" Plug 'tyru/open-browser.vim' " opens url in browser
+" Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
  Plug 'dracula/vim'
  Plug 'ryanoasis/vim-devicons'
- Plug 'SirVer/ultisnips'
- Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
  Plug 'scrooloose/nerdtree'
  Plug 'preservim/nerdcommenter'
  Plug 'mhinz/vim-startify'
  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+" vim-airline config
+let g:airline#extensions#tabline#formatter = 'default'  " f/p/file-name.js
+"let g:airline#extensions#tabline#formatter = 'jsformatter' " path-to/f
+"let g:airline#extensions#tabline#formatter = 'unique_tail' " file-name.js
+"let g:airline#extensions#tabline#formatter = 'unique_tail_improved' " f/p/file-name.js
+let g:airline_theme='tomorrow'
 
 " color schemes
  if (has('termguicolors'))
