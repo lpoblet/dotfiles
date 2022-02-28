@@ -36,6 +36,7 @@ alias nf='neofetch'
 
 # neovim
 alias vim='nvim'
+alias nv='nvim'
 
 # nordVPN $ ip info
 alias nords='nordvpn status'
