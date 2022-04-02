@@ -1,0 +1,20 @@
+[Animation]
+Frames=15
+
+[Appearance]
+BackgroundColorOpacity=80
+Translucency=true
+
+[Desktop Entry]
+DefaultProfile=Leo.profile
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+Height=80
+Screen=1
+ShowOnAllDesktops=false
+ShowSystrayIcon=false
+ShowTabBar=false
+Width=80
