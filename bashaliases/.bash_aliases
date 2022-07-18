@@ -35,8 +35,8 @@ alias mountw='sudo mount /dev/sde2 /mnt/windows/'
 alias nf='neofetch'
 
 # neovim
-alias vim='nvim'
-alias v='nvim'
+#alias vim='nvim'
+#alias v='nvim'
 
 # nordVPN $ ip info
 alias nords='nordvpn status'
