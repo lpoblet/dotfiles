@@ -17,4 +17,5 @@ Screen=1
 ShowOnAllDesktops=false
 ShowSystrayIcon=false
 ShowTabBar=false
+ShowTitleBar=false
 Width=80
