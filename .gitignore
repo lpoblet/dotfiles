@@ -19,3 +19,5 @@ tags
 [._]*.un~
 
 core
+
+__pycache__
