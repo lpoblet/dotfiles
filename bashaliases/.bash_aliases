@@ -69,3 +69,5 @@ alias rm='rm -i'
 # source bashrc
 alias src='source ~/.bashrc'
 
+# ssh
+alias sshlinode='ssh 194.195.125.145'
