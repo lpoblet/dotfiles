@@ -21,7 +21,7 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # ls
-alias ll='ls -la'
+alias ll='ls -lah'
 alias la='ls -A'
 alias l='ls -CF'
 alias ls='ls --color=auto'
