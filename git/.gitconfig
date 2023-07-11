@@ -1,3 +1,5 @@
 [user]
 	email = leandropoblet@gmail.com
 	name = Leandro Poblet
+[core]
+	editor = vim
