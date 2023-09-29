@@ -46,15 +46,19 @@ alias nordc='nordvpn connect NZ'
 alias nordar='nordvpn connect AR'
 alias nordau='nordvpn connect AU'
 alias nordd='nordvpn disconnect'
-alias nordksoff='nordvpn set killswitch off'
 alias nordkson='nordvpn set killswitch on'
+alias nordksoff='nordvpn set killswitch off'
+alias nordacon='nordvpn set autoconnect on'
+alias nordacoff='nordvpn set autoconnect off'
 alias nordr='nordr'
 alias myip='getmyipinfo'
 function nordr() {
 	nordd
+	nordacoff
 	nordksoff
 	nordc
 	nordkson
+	nordacon
 }
 function getmyipinfo() {
 	curl ipinfo.io/ip
