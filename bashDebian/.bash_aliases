@@ -11,8 +11,9 @@ alias free='free -m'			# show sizes in MB
 alias gits='git status'
 alias gitd='git diff'
 alias gita='git add .'
-#alias gitc='git commit -m' 		# find how to prompt for comment
-alias gitp='git push'
+alias gitc='git commit' 		# find how to prompt for comment
+alias gitp='git pull'
+alias gitP='git push'
 alias gitf='git fetch'
 
 # grep
@@ -35,7 +36,7 @@ alias mountw='sudo mount /dev/sde2 /mnt/windows/'
 alias nf='neofetch'
 
 # neovim
-#alias vim='nvim'
+alias vim='nvim'
 alias v='nvim'
 
 # nordVPN $ ip info
