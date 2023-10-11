@@ -42,23 +42,33 @@ alias v='nvim'
 # nordVPN $ ip info
 alias nords='nordvpn status'
 alias nordset='nordvpn settings'
-alias nordc='nordvpn connect NZ'
+alias nordc='nordc'
 alias nordar='nordvpn connect AR'
 alias nordau='nordvpn connect AU'
-alias nordd='nordvpn disconnect'
+alias nordd='nordd'
 alias nordkson='nordvpn set killswitch on'
 alias nordksoff='nordvpn set killswitch off'
+alias nordcson='nordvpn set cybersec on'
+alias nordcsoff='nordvpn set cybersec off'
 alias nordacon='nordvpn set autoconnect on'
 alias nordacoff='nordvpn set autoconnect off'
 alias nordr='nordr'
 alias myip='getmyipinfo'
+function nordc() {
+	nordvpn connect NZ
+	nordacon
+	nordkson
+	nordcson
+}
 function nordr() {
 	nordd
+	nordc
+}
+function nordd() {
 	nordacoff
 	nordksoff
-	nordc
-	nordkson
-	nordacon
+	nordcsoff
+	nordvpn disconnect
 }
 function getmyipinfo() {
 	curl ipinfo.io/ip
