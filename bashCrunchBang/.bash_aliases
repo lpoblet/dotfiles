@@ -11,7 +11,7 @@ alias free='free -m'			# show sizes in MB
 alias gits='git status'
 alias gitd='git diff'
 alias gita='git add .'
-alias gitc='git commit' 		# find how to prompt for comment
+alias gitc='git commit'
 alias gitp='git pull'
 alias gitP='git push'
 alias gitf='git fetch'
@@ -27,52 +27,12 @@ alias la='ls -A'
 alias l='ls -CF'
 alias ls='ls --color=auto'
 
-# mount
-alias mountb='sudo mount /dev/sdb2 /mnt/bucket/'
-alias mountp='sudo mount /dev/sde1 /mnt/playground/'
-alias mountw='sudo mount /dev/sde2 /mnt/windows/'
-
 # neofetch
 alias nf='neofetch'
 
 # neovim
-alias vim='nvim'
-alias v='nvim'
-
-# nordVPN $ ip info
-alias nords='nordvpn status'
-alias nordset='nordvpn settings'
-alias nordc='nordc'
-alias nordar='nordvpn connect AR'
-alias nordau='nordvpn connect AU'
-alias nordd='nordd'
-alias nordkson='nordvpn set killswitch on'
-alias nordksoff='nordvpn set killswitch off'
-alias nordcson='nordvpn set cybersec on'
-alias nordcsoff='nordvpn set cybersec off'
-alias nordacon='nordvpn set autoconnect on'
-alias nordacoff='nordvpn set autoconnect off'
-alias nordr='nordr'
-alias myip='getmyipinfo'
-function nordc() {
-	nordvpn connect NZ
-	nordacon
-	nordkson
-	nordcson
-}
-function nordr() {
-	nordd
-	nordc
-}
-function nordd() {
-	nordacoff
-	nordksoff
-	nordcsoff
-	nordvpn disconnect
-}
-function getmyipinfo() {
-	curl ipinfo.io/ip
-}
+alias vim='~/downloads/nvim-linux64/bin/nvim'
+alias v='~/downloads/nvim-linux64/bin/nvim'
 
 # python3
 alias python='python3'
