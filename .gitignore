@@ -21,3 +21,6 @@ tags
 core
 
 __pycache__
+
+# nvim
+nvim/.config/nvim/lazy-lock.json
