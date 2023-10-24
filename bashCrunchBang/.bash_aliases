@@ -31,8 +31,8 @@ alias ls='ls --color=auto'
 alias nf='neofetch'
 
 # neovim
-alias vim='~/downloads/nvim-linux64/bin/nvim'
-alias v='~/downloads/nvim-linux64/bin/nvim'
+alias vim='nvim'
+alias v='nvim'
 
 # python3
 alias python='python3'
