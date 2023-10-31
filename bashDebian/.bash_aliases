@@ -1,3 +1,6 @@
+# cmatrix
+alias cm='cmatrix'			# launch cmatrix 
+
 # cp
 alias cp='cp -i'			# confirm before overwritting something
 
@@ -11,7 +14,7 @@ alias free='free -m'			# show sizes in MB
 alias gits='git status'
 alias gitd='git diff'
 alias gita='git add .'
-alias gitc='git commit' 		# find how to prompt for comment
+alias gitc='git commit'
 alias gitf='git fetch'
 
 # grep
