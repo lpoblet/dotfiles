@@ -12,8 +12,6 @@ alias gits='git status'
 alias gitd='git diff'
 alias gita='git add .'
 alias gitc='git commit' 		# find how to prompt for comment
-alias gitp='git pull'
-alias gitP='git push'
 alias gitf='git fetch'
 
 # grep
