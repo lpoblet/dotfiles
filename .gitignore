@@ -24,3 +24,4 @@ __pycache__
 
 # nvim
 nvim/.config/nvim/lazy-lock.json
+.luarc.json
