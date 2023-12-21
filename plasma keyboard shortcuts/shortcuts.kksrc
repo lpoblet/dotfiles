@@ -7,16 +7,16 @@ Switch to Next Keyboard Layout=Meta+Alt+K
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+]; Ctrl+PgDown
-Activate Previous Tab=Ctrl+[; Ctrl+PgUp
+Activate Next Tab=Ctrl+PgDown; Ctrl+]
+Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Alt+Left; Back
+Back=Back; Alt+Left
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Ctrl+Esc
+Close=Ctrl+Esc; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+C; Ctrl+Ins
@@ -38,14 +38,14 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Forward; Alt+Right
+Forward=Alt+Right; Forward
 ForwardWord=Ctrl+Right
 FullScreen=Ctrl+Shift+F
 Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=F1
-Home=Alt+Home; Home Page
+Home=Home Page; Alt+Home
 KeyBindings=Ctrl+Alt+,
 Mail=
 MoveToTrash=Del
@@ -63,7 +63,7 @@ PrintPreview=
 Prior=PgUp
 Quit=Ctrl+Q
 Redo=Ctrl+Shift+Z
-Reload=Refresh; F5
+Reload=F5; Refresh
 RenameFile=F2
 Replace=Ctrl+R
 ReportBug=
@@ -90,6 +90,9 @@ Zoom=
 ZoomIn=Ctrl++; Ctrl+=
 ZoomOut=Ctrl+-
 
+[chromium.desktop][Global Shortcuts]
+_launch=Alt+C
+
 [kaccess][Global Shortcuts]
 Toggle Screen Reader On and Off=
 
@@ -110,7 +113,7 @@ decrease_microphone_volume=Microphone Volume Down
 decrease_volume=Volume Down
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
-mic_mute=Microphone Mute; Meta+Volume Mute
+mic_mute=Meta+Volume Mute; Microphone Mute
 mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
@@ -214,7 +217,7 @@ Window Minimize=Meta+PgDown
 Window Move=Meta+M
 Window Move Center=Meta+C
 Window No Border=
-Window On All Desktops=
+Window On All Desktops=Meta+Shift+D
 Window One Desktop Down=
 Window One Desktop Up=
 Window One Desktop to the Left=
@@ -293,6 +296,11 @@ _launch=Alt+F
 [org.kde.kcalc.desktop][Global Shortcuts]
 _launch=
 
+[org.kde.konsole.desktop][Global Shortcuts]
+NewTab=
+NewWindow=
+_launch=Alt+Return
+
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
 _launch=Alt+D
@@ -308,6 +316,12 @@ OpenWithoutScreenshot=
 RectangularRegionScreenShot=Ctrl+Print
 WindowUnderCursorScreenShot=
 _launch=Print
+
+[org.mozilla.firefox.desktop][Global Shortcuts]
+_launch=Alt+W
+new-private-window=
+new-window=
+profile-manager-window=
 
 [org_kde_powerdevil][Global Shortcuts]
 Decrease Keyboard Brightness=Keyboard Brightness Down
@@ -358,6 +372,11 @@ kcm-lookandfeel=
 kcm-users=
 powerdevilprofilesconfig=
 screenlocker=
+
+[thunderbird.desktop][Global Shortcuts]
+ComposeMessage=
+OpenAddressBook=
+_launch=Alt+E
 
 [yakuake][Global Shortcuts]
 toggle-window-state=F12
