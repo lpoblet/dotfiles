@@ -1,38 +1,16 @@
 [global_config]
-  focus = system
-  inactive_color_offset = 0.7083333333333334
-  suppress_multiple_term_dialog = True
-  title_font = Sans 20
+  window_state = maximise
 [keybindings]
 [profiles]
   [[default]]
-    background_darkness = 0.6
     background_type = transparent
     cursor_color = "#aaaaaa"
-    font = Source Code Pro 20
-    show_titlebar = False
-    scrollbar_position = hidden
-    exit_action = hold
-    use_custom_command = True
-    custom_command = bash
-    use_system_font = False
 [layouts]
   [[default]]
-    [[[child0]]]
+    [[[window0]]]
       type = Window
       parent = ""
-      order = 0
-      position = 1925:5
-      maximised = False
-      fullscreen = False
-      size = 1907, 1038
-      title = leo@leo-pc: ~
-      last_active_term = b0e7cee9-58a0-4e70-a957-60932794edca
-      last_active_window = True
-    [[[terminal1]]]
+    [[[child1]]]
       type = Terminal
-      parent = child0
-      order = 0
-      profile = default
-      uuid = b0e7cee9-58a0-4e70-a957-60932794edca
+      parent = window0
 [plugins]
