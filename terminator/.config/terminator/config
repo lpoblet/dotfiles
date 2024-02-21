@@ -1,10 +1,17 @@
 [global_config]
   window_state = maximise
+  title_hide_sizetext = True
+  title_use_system_font = False
 [keybindings]
 [profiles]
   [[default]]
+    icon_bell = False
     background_type = transparent
     cursor_color = "#aaaaaa"
+    font = Ubuntu Mono 18
+    show_titlebar = False
+    use_system_font = False
+    copy_on_selection = True
 [layouts]
   [[default]]
     [[[window0]]]
@@ -13,4 +20,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
+      profile = default
 [plugins]
