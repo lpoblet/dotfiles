@@ -1,5 +1,5 @@
 # rm
-alias rm='rm -i'
+alias rm='rm -i'			# confirm before deleting something
 
 # cp
 alias cp='cp -i'			# confirm before overwritting something
@@ -21,9 +21,8 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-# neovim
-alias vim='nvim'
-alias v='nvim'
+#vim
+alias v='vim'
 
 # source bashrc
 alias src='source ~/.bashrc'
