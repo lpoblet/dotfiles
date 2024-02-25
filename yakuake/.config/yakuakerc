@@ -11,6 +11,9 @@ DefaultProfile=Leo.profile
 [Dialogs]
 FirstRun=false
 
+[Notification Messages]
+hinding_title_bar=false
+
 [Window]
 Height=80
 Screen=1

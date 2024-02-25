@@ -1,15 +1,12 @@
 [global_config]
-  window_state = maximise
-  title_hide_sizetext = True
-  title_use_system_font = False
 [keybindings]
 [profiles]
   [[default]]
     icon_bell = False
     background_type = transparent
-    cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 18
+    font = Ubuntu Mono 14
     show_titlebar = False
+    scrollbar_position = hidden
     use_system_font = False
     copy_on_selection = True
 [layouts]
