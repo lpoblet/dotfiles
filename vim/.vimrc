@@ -1,4 +1,4 @@
-" vim-bootstrap 2022-08-18 07:16:12
+" vim-bootstrap 2024-02-25 21:17:27
 
 "*****************************************************************************
 "" Vim-Plug core
@@ -75,6 +75,9 @@ Plug 'honza/vim-snippets'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
+
+" 
+
 
 " html
 "" HTML Bundle
@@ -170,7 +173,6 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
-set relativenumber
 
 let no_buffers_menu=1
 colorscheme molokai
@@ -219,9 +221,7 @@ endif
 
 
 "" Disable the blinking cursor.
-"set gcr=a:blinkon0
-set cursorline
-set cursorcolumn
+set gcr=a:blinkon0
 
 set scrolloff=3
 
@@ -380,8 +380,7 @@ noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 "" fzf.vim
 set wildmode=list:longest,list:full
-set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__,*/tmp/*,*.so,*.swp,*.zip,*.db,*.sqlite,*node_modules/,*.docx,*.jpg,*.png,*.gif,*.pdf,*.exe,*.flv,*.img,*.xlsx
-
+set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc,__pycache__
 let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/**' -prune -o -path 'target/**' -prune -o -path 'dist/**' -prune -o  -type f -print -o -type l -print 2> /dev/null"
 
 " The Silver Searcher
@@ -522,6 +521,9 @@ let python_highlight_all = 1
 " typescript
 let g:yats_host_keyword = 1
 
+
+
+" 
 
 
 "*****************************************************************************

@@ -57,16 +57,16 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u:\w\$ '
 fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -119,3 +119,48 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+gb() {
+  git branch 2>/dev/null | awk '/^\*/{ORS=""; print $2}'
+}
+git_branch() {
+  echo -n '(' && gb && echo -n ')'
+}
+
+# Add the functions from kube-ps1.sh to the current shell environment
+source /home/vagrant/bin/kube-ps1.sh
+
+# add completion of aws and kubectl
+source <(kubectl completion bash)
+complete -o default -o nospace -F __start_kubectl kubectl
+complete -C $(type -p aws_completer) aws
+
+# Update the PS1 / Prompt String 1 (a.k.a the bash prompt) with the git branch plus the
+# Kubernetes context and namespace where appropriate
+# e.g. vagrant:~/cip (main)(⎈ |apif_dev:default)$
+PS1='\u:\w \[\e[32m\]$(git_branch)\[\e[0m\]$(kube_ps1)$ '
+
+# Turn kube info off by default - turn it on by calling kubeon
+kubeoff
+
+PATH="$PATH:/home/vagrant/bin:/home/vagrant/bin/adr-tools:/home/vagrant/.tfenv/bin:/usr/local/go/bin:/home/vagrant/go/bin"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PYENV_ROOT="/home/vagrant/.pyenv"
+export PATH="$PYENV_ROOT/bin:/home/vagrant/.local/bin:$PATH"
+eval "$(pyenv init --path)"
+export PIPX_DEFAULT_PYTHON="$(pyenv which python)"
+
+if chage -l vagrant | grep -q 'password must be changed'
+  then
+    echo "Please change the vagrant user password from 'vagrant' before restarting the VM, or the restart will fail"
+fi
+
+# If user provided a personal login script then source it
+if [[ -f ~/vm-personal-provisioning/personal_login.rc ]]
+  then
+    source ~/vm-personal-provisioning/personal_login.rc
+fi
+export PIPX_DEFAULT_PYTHON="$(pyenv which python)"
