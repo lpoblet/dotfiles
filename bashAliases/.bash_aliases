@@ -24,6 +24,9 @@ alias fgrep='fgrep --color=auto'
 #vim
 alias v='vim'
 
+#ranger
+alias r='ranger'
+
 # source bashrc
 alias src='source ~/.bashrc'
 
