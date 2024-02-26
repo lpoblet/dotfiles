@@ -4,6 +4,7 @@
   [[default]]
     icon_bell = False
     background_type = transparent
+    cursor_color = "#aaaaaa"
     font = Ubuntu Mono 14
     show_titlebar = False
     scrollbar_position = hidden
