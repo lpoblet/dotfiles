@@ -34,11 +34,18 @@ set cursorline
 " Column color set to grey
 "highlight ColorColumn ctermbg=1
 
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+    silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+      autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+      endif
+
 " Plugins
 call plug#begin('~/.vim/plugged')
 
 " Make your Vim/Neovim as smart as VSCode
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_disable_startup_warning = 1
 
 " Formatter
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
