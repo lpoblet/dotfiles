@@ -3,3 +3,5 @@
 	name = Leandro Poblet
 [core]
 	editor = vim
+[cola]
+	spellcheck = false
