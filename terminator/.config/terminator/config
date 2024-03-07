@@ -1,4 +1,7 @@
 [global_config]
+  geometry_hinting = True
+  borderless = True
+  inactive_color_offset = 1.0
 [keybindings]
 [profiles]
   [[default]]
@@ -15,6 +18,7 @@
     [[[window0]]]
       type = Window
       parent = ""
+      size = 1667, 951
     [[[child1]]]
       type = Terminal
       parent = window0
