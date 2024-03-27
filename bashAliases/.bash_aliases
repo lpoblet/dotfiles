@@ -36,6 +36,7 @@ alias gitd='git diff'
 alias gita='git add .'
 alias gitc='git commit'
 alias gitf='git fetch'
+alias gitl='git log --oneline'
 
 # python3
 alias python='python3'
