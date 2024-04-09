@@ -31,15 +31,57 @@ alias r='ranger'
 alias src='source ~/.bashrc'
 
 # git
-alias gits='git status'
-alias gitd='git diff'
-alias gita='git add .'
-alias gitc='git commit'
-alias gitf='git fetch'
-alias gitl='git log --oneline'
+alias gs='git status'
+alias gd='git diff'
+alias ga='git add .'
+alias gc='git commit' 
+alias gf='git fetch'
+alias gl='git log --oneline'
 
 # python3
 alias python='python3'
 alias pip='pip3'
 
-
+# docker
+alias dh='docker --help'
+alias dps='docker ps --all'
+function dcc {
+  docker container create $1
+}
+function dcs {
+  docker container start $1
+}
+function dcsa {
+  docker container start --attach $1
+}
+function dl {
+  docker logs $1
+}
+# docker run = docker container create + start + attach
+function dr {
+  docker run -d $1
+}
+function di {
+  docker images 
+}
+function dk {
+  docker kill $1
+}
+function de {
+  docker exec $1 $2
+}
+function dtty {
+  docker exec --interactive --tty $1 bash
+}
+function ds {
+  docker stop -t 0 $1
+}
+function drm {
+  docker rm $1
+}
+functino drma {
+  docker ps -aq | xargs docker rm
+}
+functino drmi {
+  docker rmi $1
+}
