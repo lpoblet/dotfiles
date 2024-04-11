@@ -34,7 +34,7 @@ alias src='source ~/.bashrc'
 alias gs='git status'
 alias gd='git diff'
 alias ga='git add .'
-alias gc='git commit' 
+alias gc='git commit'
 alias gf='git fetch'
 alias gl='git log --oneline'
 
