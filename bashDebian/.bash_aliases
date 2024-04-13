@@ -87,6 +87,9 @@ function getmyipinfo() {
 # docker
 alias dh='docker --help'
 alias dps='docker ps --all'
+function dv {
+  docker version
+}
 function dcc {
   docker container create $1
 }
