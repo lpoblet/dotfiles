@@ -79,9 +79,9 @@ function ds {
 function drm {
   docker rm $1
 }
-functino drma {
+function drma {
   docker ps -aq | xargs docker rm
 }
-functino drmi {
+function drmi {
   docker rmi $1
 }
