@@ -99,6 +99,9 @@ function dcs {
 function dcsa {
   docker container start --attach $1
 }
+function dcup {
+  docker compose up -d 
+}
 function dl {
   docker logs $1
 }
