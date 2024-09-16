@@ -1,14 +1,17 @@
 [global_config]
   geometry_hinting = True
   borderless = True
+  tab_position = hidden
   inactive_color_offset = 1.0
 [keybindings]
 [profiles]
   [[default]]
     icon_bell = False
     background_type = transparent
-    cursor_color = "#aaaaaa"
-    font = Ubuntu Mono 14
+    cursor_shape = underline
+    cursor_fg_color = "#000000"
+    cursor_bg_color = "#aaaaaa"
+    font = JetBrains Mono 16
     show_titlebar = False
     scrollbar_position = hidden
     use_system_font = False
