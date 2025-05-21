@@ -39,12 +39,57 @@ alias gf='git fetch'
 alias gl='git log --oneline'
 
 # python3
-alias p='python3'
+alias python='python3'
 alias pip='pip3'
+
+# cmatrix
+alias cm='cmatrix'			# launch cmatrix 
+
+# neofetch
+alias nf='neofetch'
+
+# nordVPN $ ip info
+alias nords='nordvpn status'
+alias nordset='nordvpn settings'
+alias nordc='nordc'
+alias nordar='nordvpn connect AR'
+alias nordau='nordvpn connect AU'
+alias nordd='nordd'
+alias nordl='nordvpn login'
+alias nordkson='nordvpn set killswitch on'
+alias nordksoff='nordvpn set killswitch off'
+alias nordcson='nordvpn set cybersec on'
+alias nordcsoff='nordvpn set cybersec off'
+alias nordacon='nordvpn set autoconnect on'
+alias nordacoff='nordvpn set autoconnect off'
+alias nordr='nordr'
+alias myip='getmyipinfo'
+function nordc() {
+	nordvpn connect NZ
+	nordacon
+	nordkson
+	nordcson
+}
+function nordr() {
+	nordd
+	nordc
+}
+function nordd() {
+	nordacoff
+	nordksoff
+	nordcsoff
+	nordvpn disconnect
+}
+function getmyipinfo() {
+	curl ipinfo.io/ip
+}
 
 # docker
 alias dh='docker --help'
 alias dps='docker ps --all'
+function dv {
+  docker version
+}
 function dcc {
   docker container create $1
 }
@@ -53,6 +98,9 @@ function dcs {
 }
 function dcsa {
   docker container start --attach $1
+}
+function dcup {
+  docker compose up -d 
 }
 function dl {
   docker logs $1
