@@ -9,8 +9,7 @@
     icon_bell = False
     background_type = transparent
     cursor_shape = underline
-    cursor_fg_color = "#000000"
-    cursor_bg_color = "#aaaaaa"
+    cursor_color = "#aaaaaa"
     font = JetBrains Mono 16
     show_titlebar = False
     scrollbar_position = hidden
