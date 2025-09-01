@@ -133,6 +133,3 @@ function drma {
 function drmi {
   docker rmi $1
 }
-
-# jenkins
-alias fixjenkins='sudo chown -R jenkins:jenkins /opt/api-tests'
