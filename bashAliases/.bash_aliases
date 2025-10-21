@@ -24,6 +24,9 @@ alias fgrep='fgrep --color=auto'
 #vim
 alias v='vim'
 
+#vim
+alias nv='/usr/local/bin/nvim'
+
 #ranger
 alias r='ranger'
 
