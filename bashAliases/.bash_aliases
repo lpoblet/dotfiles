@@ -1,14 +1,14 @@
 # rm
-alias rm='rm -i'			# confirm before deleting something
+alias rm='rm -i' # confirm before deleting something
 
 # cp
-alias cp='cp -i'			# confirm before overwritting something
+alias cp='cp -i' # confirm before overwritting something
 
 # df
-alias df='df -h'			# human-readable sizes
+alias df='df -h' # human-readable sizes
 
 # free
-alias free='free -m'			# show sizes in MB
+alias free='free -m' # show sizes in MB
 
 # ls
 alias ll='ls -lah'
@@ -22,7 +22,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 #vim
-alias v='vim'
+#alias v='vim'
+alias v='nvim'
 
 #vim
 alias nv='/usr/local/bin/nvim'
@@ -46,7 +47,7 @@ alias python='python3'
 alias pip='pip3'
 
 # cmatrix
-alias cm='cmatrix'			# launch cmatrix 
+alias cm='cmatrix' # launch cmatrix
 
 # neofetch
 alias nf='neofetch'
@@ -68,23 +69,23 @@ alias nordacoff='nordvpn set autoconnect off'
 alias nordr='nordr'
 alias myip='getmyipinfo'
 function nordc() {
-	nordvpn connect NZ
-	nordacon
-	nordkson
-	nordcson
+  nordvpn connect NZ
+  nordacon
+  nordkson
+  nordcson
 }
 function nordr() {
-	nordd
-	nordc
+  nordd
+  nordc
 }
 function nordd() {
-	nordacoff
-	nordksoff
-	nordcsoff
-	nordvpn disconnect
+  nordacoff
+  nordksoff
+  nordcsoff
+  nordvpn disconnect
 }
 function getmyipinfo() {
-	curl ipinfo.io/ip
+  curl ipinfo.io/ip
 }
 
 # docker
@@ -103,7 +104,7 @@ function dcsa {
   docker container start --attach $1
 }
 function dcup {
-  docker compose up -d 
+  docker compose up -d
 }
 function dl {
   docker logs $1
@@ -113,7 +114,7 @@ function dr {
   docker run -d $1
 }
 function di {
-  docker images 
+  docker images
 }
 function dk {
   docker kill $1
