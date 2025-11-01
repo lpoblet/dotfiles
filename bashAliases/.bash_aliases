@@ -1,11 +1,11 @@
-# rm
-alias rm='rm -i' # confirm before deleting something
-
-# cp
-alias cp='cp -i' # confirm before overwritting something
+# safer file operations
+alias rm='rm -i' # interactive remove
+alias mv='mv -i'
+alias cp='cp -i'
 
 # go to
 alias ..='cd ..'
+alias ...='cd ../..'
 alias dot='cd ~/dotfiles/'
 alias conf='cd ~/.config/'
 
@@ -26,11 +26,11 @@ alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
-#vim
+# vim
 #alias v='vim'
 alias v='nvim'
 
-#ranger
+# ranger
 alias r='ranger'
 
 # source bashrc
@@ -139,3 +139,21 @@ function drma {
 function drmi {
   docker rmi $1
 }
+
+# System & process
+alias update='sudo apt update && sudo apt upgrade -y' # Debian/Ubuntu; change for other distros
+alias top='btop'                                      # if installed
+alias psg='ps aux | grep -i -n'                       # search processes
+
+# Networking
+alias myip='curl -s https://icanhazip.com'
+
+# Kubernetes (kubectl) if installed
+alias k='kubectl'
+alias kgp='kubectl get pods -o wide'
+alias kgs='kubectl get svc'
+alias kctx='kubectl config use-context'
+alias kns='kubectl config set-context --current --namespace'
+
+# Tmux shortcuts
+alias t='tmux attach || tmux new -s main'
