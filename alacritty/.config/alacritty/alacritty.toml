@@ -1,5 +1,7 @@
+general.import = [
 # Shared configuration
-general.import = ["~/.config/alacritty/alacritty-common.toml",
+"~/.config/alacritty/alacritty-common.toml",
+
 # Local configuration
 # Use ~/dotfiles/alacritty/install.sh to generate file 
 "~/.config/alacritty/alacritty-local.toml"]

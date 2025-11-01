@@ -4,6 +4,10 @@ alias rm='rm -i' # confirm before deleting something
 # cp
 alias cp='cp -i' # confirm before overwritting something
 
+# go to
+alias dot='cd ~/dotfiles/'
+alias conf='cd ~/.config/'
+
 # df
 alias df='df -h' # human-readable sizes
 
@@ -25,9 +29,6 @@ alias fgrep='fgrep --color=auto'
 #alias v='vim'
 alias v='nvim'
 
-#vim
-alias nv='/usr/local/bin/nvim'
-
 #ranger
 alias r='ranger'
 
@@ -40,7 +41,7 @@ alias gd='git diff'
 alias ga='git add .'
 alias gc='git commit'
 alias gf='git fetch'
-alias gl='git log --oneline'
+alias gl='git log --oneline --graph --decorate --all'
 
 # python3
 alias python='python3'
