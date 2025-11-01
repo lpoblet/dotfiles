@@ -1,17 +1,5 @@
-[env]
-
-[window]
-dimensions = { columns = 134, lines = 34 }
-padding.x = 10
-padding.y = 10
-
-decorations = "none"
-
-opacity = 0.6
-blur = false 
-
-option_as_alt = "Both"
-
-[font]
-normal.family = "JetBrains Mono"
-size = 16
+# Shared configuration
+general.import = ["~/.config/alacritty/alacritty-common.toml",
+# Local configuration
+# Use ~/dotfiles/alacritty/install.sh to generate file 
+"~/.config/alacritty/alacritty-local.toml"]
