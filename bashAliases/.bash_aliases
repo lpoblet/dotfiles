@@ -5,6 +5,7 @@ alias rm='rm -i' # confirm before deleting something
 alias cp='cp -i' # confirm before overwritting something
 
 # go to
+alias ..='cd ..'
 alias dot='cd ~/dotfiles/'
 alias conf='cd ~/.config/'
 
