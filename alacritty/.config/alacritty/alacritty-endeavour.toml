@@ -1,0 +1,8 @@
+# Laptop - smaller screen  
+[window]
+dimensions = { columns = 175, lines = 43 }
+opacity = 0.6
+
+# Laptop-specific settings
+[font]
+size = 11.0

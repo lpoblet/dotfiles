@@ -1,0 +1,16 @@
+[env]
+
+[window]
+padding.x = 10
+padding.y = 10
+
+decorations = "none"
+
+opacity = 0.6
+blur = false 
+
+option_as_alt = "Both"
+
+[font]
+normal.family = "JetBrains Mono"
+size = 16
