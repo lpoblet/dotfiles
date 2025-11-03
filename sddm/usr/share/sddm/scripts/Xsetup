@@ -1,5 +1,5 @@
 #!/bin/sh
 # Xsetup - run as root before the login dialog appears
 
-xrandr --output XWAYLAND1 --off
 xrandr --output XWAYLAND0 --mode 1920x1080
+xrandr --output XWAYLAND1 --off
