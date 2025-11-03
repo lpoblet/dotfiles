@@ -1,0 +1,1 @@
+../bashAliases/.bash_aliases
