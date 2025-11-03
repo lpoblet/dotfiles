@@ -51,8 +51,9 @@ alias pip='pip3'
 # cmatrix
 alias cm='cmatrix' # launch cmatrix
 
-# neofetch
-alias nf='neofetch'
+# fastfetch
+alias nf='fastfetch'
+alias ff='fastfetch'
 
 # nordVPN $ ip info
 alias nords='nordvpn status'
