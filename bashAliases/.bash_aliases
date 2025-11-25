@@ -43,6 +43,7 @@ alias ga='git add .'
 alias gc='git commit'
 alias gf='git fetch'
 alias gl='git log --oneline --graph --decorate --all'
+alias lg='lazygit'
 
 # python3
 alias python='python3'
