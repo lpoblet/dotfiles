@@ -57,41 +57,14 @@ alias cm='cmatrix -s' # launch cmatrix
 alias nf='fastfetch'
 alias ff='fastfetch'
 
-# nordVPN $ ip info
-alias nords='nordvpn status'
-alias nordset='nordvpn settings'
-alias nordc='nordc'
-alias nordar='nordvpn connect AR'
-alias nordau='nordvpn connect AU'
-alias nordd='nordd'
-alias nordl='nordvpn login'
-alias nordkson='nordvpn set killswitch on'
-alias nordksoff='nordvpn set killswitch off'
-alias nordcson='nordvpn set cybersec on'
-alias nordcsoff='nordvpn set cybersec off'
-alias nordacon='nordvpn set autoconnect on'
-alias nordacoff='nordvpn set autoconnect off'
-alias nordr='nordr'
-alias myip='getmyipinfo'
-function nordc() {
-  nordvpn connect NZ
-  nordacon
-  nordkson
-  nordcson
-}
-function nordr() {
-  nordd
-  nordc
-}
-function nordd() {
-  nordacoff
-  nordksoff
-  nordcsoff
-  nordvpn disconnect
-}
-function getmyipinfo() {
-  curl ipinfo.io/ip
-}
+# Tmux shortcuts
+alias t='tmux attach || tmux new -s main'
+alias tls='tmux ls'
+
+# System & process
+alias update='sudo apt update && sudo apt upgrade -y' # Debian/Ubuntu; change for other distros
+alias top='btop'                                      # if installed
+alias psg='ps aux | grep -i -n'                       # search processes
 
 # docker
 alias dh='docker --help'
@@ -143,11 +116,6 @@ function drmi {
   docker rmi $1
 }
 
-# System & process
-alias update='sudo apt update && sudo apt upgrade -y' # Debian/Ubuntu; change for other distros
-alias top='btop'                                      # if installed
-alias psg='ps aux | grep -i -n'                       # search processes
-
 # Networking
 alias myip='curl -s https://icanhazip.com'
 
@@ -157,7 +125,3 @@ alias kgp='kubectl get pods -o wide'
 alias kgs='kubectl get svc'
 alias kctx='kubectl config use-context'
 alias kns='kubectl config set-context --current --namespace'
-
-# Tmux shortcuts
-alias t='tmux attach || tmux new -s main'
-alias tls='tmux ls'
