@@ -15,3 +15,5 @@ fi
 if [ -f ~/.bash_aliases_ssh ]; then
   . ~/.bash_aliases_ssh
 fi
+
+eval "$(starship init bash)"
