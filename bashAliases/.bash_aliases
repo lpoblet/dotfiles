@@ -7,6 +7,7 @@ alias cp='cp -i'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias dot='cd ~/dotfiles/'
+alias sb='cd ~/Documents/second-brain/'
 alias conf='cd ~/.config/'
 
 # df
@@ -159,3 +160,4 @@ alias kns='kubectl config set-context --current --namespace'
 
 # Tmux shortcuts
 alias t='tmux attach || tmux new -s main'
+alias tls='tmux ls'
