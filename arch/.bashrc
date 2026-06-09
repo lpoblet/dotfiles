@@ -12,3 +12,6 @@ PS1='[\u@\h \W]\$ '
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
+if [ -f ~/.bash_aliases_ssh ]; then
+  . ~/.bash_aliases_ssh
+fi
