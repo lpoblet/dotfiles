@@ -17,3 +17,5 @@ if [ -f ~/.bash_aliases_ssh ]; then
 fi
 
 eval "$(starship init bash)"
+
+export PATH="~/scripts:$PATH"
