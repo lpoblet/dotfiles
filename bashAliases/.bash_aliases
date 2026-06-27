@@ -28,8 +28,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # vim
-#alias v='vim'
-alias v='nvim'
+alias v='vim'
+#alias v='nvim'
 
 # ranger
 alias r='ranger'

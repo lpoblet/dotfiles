@@ -13,6 +13,6 @@ if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
-eval "$(starship init bash)"
+#eval "$(starship init bash)"
 
 export PATH="~/scripts:$PATH"
