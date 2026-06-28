@@ -16,3 +16,5 @@ fi
 #eval "$(starship init bash)"
 
 export PATH="~/scripts:$PATH"
+
+set -o vi
