@@ -43,6 +43,10 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("sleep 0.5 && waybar &")
 end)
 
+hl.on("hyprland.start", function()
+    hl.exec_cmd("hypridle")
+end)
+
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------

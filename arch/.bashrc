@@ -17,4 +17,4 @@ fi
 
 export PATH="~/scripts:$PATH"
 
-set -o vi
+#set -o vi
