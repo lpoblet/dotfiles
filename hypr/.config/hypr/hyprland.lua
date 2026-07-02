@@ -211,8 +211,8 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "es",
-        kb_variant = "",
+        kb_layout  = "es,us",
+        kb_variant = ",altgr-intl",
         kb_model   = "",
         kb_options = "",
         kb_rules   = "",
@@ -257,6 +257,9 @@ hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+
+-- Suspend (doesn't work)
+--hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("systemctl syspend"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
