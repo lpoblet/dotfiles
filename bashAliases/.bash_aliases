@@ -28,8 +28,8 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # vim
-#alias v='vim'
-alias v='nvim'
+alias v='vim'
+#alias v='nvim'
 
 # ranger
 alias r='ranger'
@@ -125,3 +125,7 @@ alias kgp='kubectl get pods -o wide'
 alias kgs='kubectl get svc'
 alias kctx='kubectl config use-context'
 alias kns='kubectl config set-context --current --namespace'
+
+# Power Management
+alias sus="systemctl suspend"
+alias hib="systemctl hybrid-sleep"
