@@ -8,7 +8,9 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias dot='cd ~/dotfiles/'
 alias sb='cd ~/Documents/second-brain/'
+alias in='cd ~/Documents/second-brain/0-Inbox'
 alias conf='cd ~/.config/'
+alias lab='cd ~/source/lab'
 
 # df
 alias df='df -h' # human-readable sizes
@@ -119,12 +121,11 @@ function drmi {
 # Networking
 alias myip='curl -s https://icanhazip.com'
 
-# Kubernetes (kubectl) if installed
+# Kubernetes
 alias k='kubectl'
-alias kgp='kubectl get pods -o wide'
-alias kgs='kubectl get svc'
-alias kctx='kubectl config use-context'
-alias kns='kubectl config set-context --current --namespace'
+source /etc/bash_completion # not needed on macos
+source <(kubectl completion bash)
+complete -o default -F __start_kubectl k
 
 # Power Management
 alias sus="systemctl suspend"
