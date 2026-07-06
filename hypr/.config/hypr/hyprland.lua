@@ -33,7 +33,7 @@ hl.on("hyprland.start", function ()
 --  hl.exec_cmd(terminal)
 --  hl.exec_cmd("nm-applet")
 --  hl.exec_cmd("waybar & hyprpaper & firefox")
-  hl.exec_cmd("waybar")
+  hl.exec_cmd("waybar & swaync")
 end)
 
 -- hyprpolkitagent
@@ -260,14 +260,18 @@ hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + S", hl.dsp.layout("togglesplit"))    -- dwindle only
 
+-- Hyprshot
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
+
 -- Suspend (doesn't work)
 --hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("systemctl syspend"))
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
