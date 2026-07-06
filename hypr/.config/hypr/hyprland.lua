@@ -6,19 +6,20 @@
 ------------------
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output = "eDP-1",
-    mode = "1920x1080@60",
+    output = "Virtual-1",
+    mode = "preferred",
     position = "auto",
-    scale    = "1",
+    scale    = "auto",
 })
 
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
 -- Set programs that you use
+
 local terminal    = "alacritty"
 local fileManager = "thunar"
-local menu        = "wofi"
+local menu        = "wofi --show drun"
 
 -------------------
 ---- AUTOSTART ----
@@ -28,11 +29,12 @@ local menu        = "wofi"
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
 --
--- hl.on("hyprland.start", function ()
---   hl.exec_cmd(terminal)
---   hl.exec_cmd("nm-applet")
---   hl.exec_cmd("waybar & hyprpaper & firefox")
--- end)
+hl.on("hyprland.start", function ()
+--  hl.exec_cmd(terminal)
+--  hl.exec_cmd("nm-applet")
+--  hl.exec_cmd("waybar & hyprpaper & firefox")
+  hl.exec_cmd("waybar & swaync & hyprpaper")
+end)
 
 -- hyprpolkitagent
 hl.on("hyprland.start", function ()
@@ -40,11 +42,11 @@ hl.on("hyprland.start", function ()
 end)
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("sleep 0.5 && waybar &")
+    hl.exec_cmd("sleep 0.5")
 end)
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("hypridle")
+    hl.exec_cmd("hypridle & hyprsunset")
 end)
 
 -------------------------------
@@ -199,8 +201,8 @@ hl.config({
 
 hl.config({
     misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+        force_default_wallpaper = 1,     -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo   = true,  -- If true disables the random hyprland logo / anime girl background. :(
     },
 })
 
@@ -211,7 +213,7 @@ hl.config({
 
 hl.config({
     input = {
-        kb_layout  = "es,us",
+        kb_layout  = "us",
         kb_variant = ",altgr-intl",
         kb_model   = "",
         kb_options = "",
@@ -248,24 +250,28 @@ hl.device({
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(terminal))
-local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
+local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
-hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
+hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
-hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
+hl.bind(mainMod .. " + S", hl.dsp.layout("togglesplit"))    -- dwindle only
+
+-- Hyprshot
+hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
+hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
 
 -- Suspend (doesn't work)
 --hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("systemctl syspend"))
 
 -- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + H",  hl.dsp.focus({ direction = "left" }))
+hl.bind(mainMod .. " + J",  hl.dsp.focus({ direction = "down" }))
+hl.bind(mainMod .. " + K",    hl.dsp.focus({ direction = "up" }))
+hl.bind(mainMod .. " + L", hl.dsp.focus({ direction = "right" }))
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
