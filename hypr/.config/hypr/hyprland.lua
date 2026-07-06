@@ -33,7 +33,7 @@ hl.on("hyprland.start", function ()
 --  hl.exec_cmd(terminal)
 --  hl.exec_cmd("nm-applet")
 --  hl.exec_cmd("waybar & hyprpaper & firefox")
-  hl.exec_cmd("waybar & swaync")
+  hl.exec_cmd("waybar & swaync & hyprpaper")
 end)
 
 -- hyprpolkitagent
@@ -46,7 +46,7 @@ hl.on("hyprland.start", function()
 end)
 
 hl.on("hyprland.start", function()
-    hl.exec_cmd("hypridle")
+    hl.exec_cmd("hypridle & hyprsunset")
 end)
 
 -------------------------------
