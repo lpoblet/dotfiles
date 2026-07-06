@@ -6,7 +6,7 @@
 ------------------
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output = "Virtual-1",
+    output = "eDP-1",
     mode = "preferred",
     position = "auto",
     scale    = "auto",
@@ -18,7 +18,7 @@ hl.monitor({
 -- Set programs that you use
 
 local terminal    = "alacritty"
-local fileManager = "thunar"
+local fileManager = "dolphin"
 local menu        = "wofi --show drun"
 
 -------------------
