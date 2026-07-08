@@ -31,7 +31,7 @@ alias fgrep='fgrep --color=auto'
 
 # vim
 alias v='vim'
-#alias v='nvim'
+alias nv='nvim'
 
 # ranger
 alias r='ranger'

@@ -9,12 +9,22 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
+# Bash aliases
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
 
+# Starship
 #eval "$(starship init bash)"
 
+# Use bash-completion, if available, and avoid double-sourcing
+[[ $PS1 &&
+  ! ${BASH_COMPLETION_VERSINFO:-} &&
+  -f /usr/share/bash-completion/bash_completion ]] &&
+    . /usr/share/bash-completion/bash_completion
+
+# Script's folder
 export PATH="~/scripts:$PATH"
 
+# Vim keys on tty
 #set -o vi
