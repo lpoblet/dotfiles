@@ -1,1 +1,19 @@
-../../scripts/restic-home-backup.service
+[Unit]
+Description=Restic Home Backup Service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=leo
+EnvironmentFile=/etc/restic/home.repo.env
+ExecStart=/home/leo/scripts/backups/restic-home-backup
+Nice=19
+IOSchedulingClass=idle
+TimeoutStartSec=12h
+PrivateTmp=true
+ProtectSystem=strict
+ReadWritePaths=/mnt/backup/home
+
+[Install]
+WantedBy=multi-user.target

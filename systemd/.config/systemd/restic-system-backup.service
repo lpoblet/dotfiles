@@ -1,1 +1,15 @@
-../../scripts/restic-system-backup.service
+[Unit]
+Description=Restic System Backup Service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+EnvironmentFile=/etc/restic/system.repo.env
+ExecStart=/usr/bin/restic backup /home/leo
+PrivateTmp=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
