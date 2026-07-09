@@ -1,0 +1,20 @@
+[Unit]
+Description=Restic Home Backup Timer
+Requires=restic-home-backup.service
+
+[Timer]
+# On calendar: every day at 2 AM
+OnCalendar=daily
+# Or for a specific time: OnCalendar=*-*-* 02:00:00
+
+# Run immediately if system was powered down when timer would have run
+Persistent=true
+
+# Run when coming out of sleep/hibernation if a scheduled run was missed
+OnWakeup=true
+
+# Randomize start time by up to 30 minutes to avoid peak load
+RandomizedDelaySec=30min
+
+[Install]
+WantedBy=timers.target

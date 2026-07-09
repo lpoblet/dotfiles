@@ -1,0 +1,12 @@
+[Unit]
+Description=Restic System Backup Timer
+Requires=restic-system-backup.service
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+Persistent=true
+OnWakeup=true
+RandomizedDelaySec=30min
+
+[Install]
+WantedBy=timers.target
