@@ -1,1 +1,133 @@
-/etc/systemd/system/restic-home-backup
+#!/bin/bash
+
+# Set environment variables for repository
+# For testing on local SSD:
+export RESTIC_REPOSITORY="/mnt/backup/home/"
+export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
+
+# Export package lists
+echo "Exporting package lists..."
+mkdir -p ~/backups/package-lists
+pacman -Qqe > ~/backups/package-lists/all-packages.txt
+pacman -Qqen > ~/backups/package-lists/native-packages.txt
+pacman -Qqem > ~/backups/package-lists/foreign-packages.txt
+
+# Run the backup
+echo "Starting backup at $(date)"
+
+restic backup \
+  /home/leo \
+  --exclude="~/.android/**" \
+  --exclude="~/.AzureToolsForIntelliJ/**" \
+  --exclude="~/.bash*" \
+  --exclude="~/.cache/**" \
+  --exclude="**/Cache/**" \
+  --exclude="**/cache/**" \
+  --exclude="**/*.tmp" \
+  --exclude="**/*.log" \
+  --exclude="**/.env" \
+  --exclude="**/.envrc" \
+  --exclude="~/.copilot/**" \
+  --exclude="~/Desktop/**" \
+  --exclude="~/dotfiles/**" \
+  --exclude="~/.dotnet/**" \
+  --exclude="~/.gitconfig" \
+  --exclude="~/.gnopg/**" \
+  --exclude="~/.gtkrc-2.0" \
+  --exclude="~/.java/**" \
+  --exclude="~/.junie/**" \
+  --exclude="~/.local/**" \
+  --exclude="~/.mozilla/**" \
+  --exclude="~/Music/**" \
+  --exclude="~/.nuget/**" \
+  --exclude="~/.pki/**" \
+  --exclude="~/.profile" \
+  --exclude="~/Public/**" \
+  --exclude="~/.pulse-cookie" \
+  --exclude="~/scripts/**" \
+  --exclude="~/.steam/**" \
+  --exclude="~/.steampath" \
+  --exclude="~/.steampid" \
+  --exclude="~/.templateengine/**" \
+  --exclude="~/Templates/**" \
+  --exclude="~/.thumbnails/**" \
+  --exclude="~/.tmux.conf" \
+  --exclude="~/.var/**" \
+  --exclude="~/.vim*" \
+  --exclude="~/.vim/**" \
+  --exclude="**/node_modules/**" \
+  --tag "home" \
+  --verbose
+
+#restic backup --dry-run \
+#  /home/leo \
+#  --exclude="~/.android/**" \
+#  --exclude="~/.AzureToolsForIntelliJ/**" \
+#  --exclude="~/.bash_history" \
+#  --exclude="~/.bashrc" \
+#  --exclude="~/.bash_profile" \
+#  --exclude="~/.bash_logout" \
+#  --exclude="~/.bash_aliases" \
+#  --exclude="~/.cache/**" \
+#  --exclude="**/Cache/**" \
+#  --exclude="**/cache/**" \
+#  --exclude="**/*.tmp" \
+#  --exclude="**/*.log" \
+#  --exclude="**/.env" \
+#  --exclude="**/.envrc" \
+#  --exclude="~/.copilot/**" \
+#  --exclude="~/Desktop/**" \
+#  --exclude="~/dotfiles/**" \
+#  --exclude="~/.dotnet/**" \
+#  --exclude="~/.gitconfig" \
+#  --exclude="~/.gnupg/**" \
+#  --exclude="~/.gtkrc-2.0" \
+#  --exclude="~/.java/**" \
+#  --exclude="~/.junie/**" \
+#  --exclude="~/.local/share/Steam/**" \
+#  --exclude="~/.local/share/Trash/**" \
+#  --exclude="~/.mozilla/firefox/*.default/cache2/**" \
+#  --exclude="~/.mozilla/firefox/*.default/safebrowsing/**" \
+#  --exclude="~/.mozilla/firefox/*.default/offlinecache/**" \
+#  --exclude="~/.mozilla/firefox/*.default/thumbnails/**" \
+#  --exclude="~/.mozilla/firefox/*.default/startupCache/**" \
+#  --exclude="~/.mozilla/firefox/*.default/security_state/**" \
+#  --exclude="~/.nuget/**" \
+#  --exclude="~/.pki/**" \
+#  --exclude="~/.pulse-cookie" \
+#  --exclude="~/.steam/**" \
+#  --exclude="~/.steampath" \
+#  --exclude="~/.steampid" \
+#  --exclude="~/.templateengine/**" \
+#  --exclude="~/.thumbnails/**" \
+#  --exclude="~/.tmux.conf" \
+#  --exclude="~/.var/**" \
+#  --exclude="~/.viminfo" \
+#  --exclude="~/.vimrc" \
+#  --exclude="~/.vim/**/swap/**" \
+#  --exclude="**/node_modules/**" \
+#  --exclude="**/__pycache__/**" \
+#  --exclude="**/*.pyc" \
+#  --exclude="~/.cargo/registry/**" \
+#  --exclude="~/.cargo/git/**" \
+#  --exclude="~/.rustup/**" \
+#  --exclude="~/.docker/**" \
+#  --exclude="~/.cache/google-chrome/**" \
+#  --exclude="~/.cache/chromium/**" \
+#  --tag "home" \
+#  --verbose=2
+
+# Maintain backups - Keep 7 daily, 4 weekly, and 12 monthly backups
+echo "Pruning old backups..."
+restic forget \
+  --keep-daily 7 \
+  --keep-weekly 4 \
+  --keep-monthly 12 \
+  --prune \
+  --tag "full-backup"
+
+# Check repository integrity
+echo "Checking repository integrity..."
+restic check
+
+echo "Backup completed at $(date)"
