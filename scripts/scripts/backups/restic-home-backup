@@ -7,113 +7,111 @@
 
 # Export package lists
 echo "Exporting package lists..."
-mkdir -p ~/backups/package-lists
-pacman -Qqe > ~/backups/package-lists/all-packages.txt
-pacman -Qqen > ~/backups/package-lists/native-packages.txt
-pacman -Qqem > ~/backups/package-lists/foreign-packages.txt
+mkdir -p $HOME/backups/package-lists
+pacman -Qqe > $HOME/backups/package-lists/all-packages.txt
+pacman -Qqen > $HOME/backups/package-lists/native-packages.txt
+pacman -Qqem > $HOME/backups/package-lists/foreign-packages.txt
 
 # Run the backup
 echo "Starting backup at $(date)"
 
 restic backup \
   /home/leo \
-  --exclude="~/.android/**" \
-  --exclude="~/.AzureToolsForIntelliJ/**" \
-  --exclude="~/.bash*" \
-  --exclude="~/.cache/**" \
-  --exclude="**/Cache/**" \
-  --exclude="**/cache/**" \
-  --exclude="**/*.tmp" \
-  --exclude="**/*.log" \
-  --exclude="**/.env" \
-  --exclude="**/.envrc" \
-  --exclude="~/.copilot/**" \
-  --exclude="~/Desktop/**" \
-  --exclude="~/dotfiles/**" \
-  --exclude="~/.dotnet/**" \
-  --exclude="~/.gitconfig" \
-  --exclude="~/.gnopg/**" \
-  --exclude="~/.gtkrc-2.0" \
-  --exclude="~/.java/**" \
-  --exclude="~/.junie/**" \
-  --exclude="~/.local/**" \
-  --exclude="~/.mozilla/**" \
-  --exclude="~/Music/**" \
-  --exclude="~/.nuget/**" \
-  --exclude="~/.pki/**" \
-  --exclude="~/.profile" \
-  --exclude="~/Public/**" \
-  --exclude="~/.pulse-cookie" \
-  --exclude="~/scripts/**" \
-  --exclude="~/.steam/**" \
-  --exclude="~/.steampath" \
-  --exclude="~/.steampid" \
-  --exclude="~/.templateengine/**" \
-  --exclude="~/Templates/**" \
-  --exclude="~/.thumbnails/**" \
-  --exclude="~/.tmux.conf" \
-  --exclude="~/.var/**" \
-  --exclude="~/.vim*" \
-  --exclude="~/.vim/**" \
-  --exclude="**/node_modules/**" \
+  --iexclude="$HOME/android/**" \
+  --iexclude="$HOME/AzureToolsForIntelliJ/**" \
+  --iexclude="$HOME/bash*" \
+  --iexclude="$HOME/cache/**" \
+  --iexclude="**/cache/**" \
+  --iexclude="**/*.tmp" \
+  --iexclude="**/*.log" \
+  --iexclude="**/.env" \
+  --iexclude="**/.envrc" \
+  --iexclude="$HOME/.copilot/**" \
+  --iexclude="$HOME/Desktop/**" \
+  --iexclude="$HOME/dotfiles/**" \
+  --iexclude="$HOME/dotnet/**" \
+  --iexclude="$HOME/gitconfig" \
+  --iexclude="$HOME/gnopg/**" \
+  --iexclude="$HOME/gtkrc-2.0" \
+  --iexclude="$HOME/java/**" \
+  --iexclude="$HOME/junie/**" \
+  --iexclude="$HOME/local/**" \
+  --iexclude="$HOME/mozilla/**" \
+  --iexclude="$HOME/Music/**" \
+  --iexclude="$HOME/nuget/**" \
+  --iexclude="$HOME/pki/**" \
+  --iexclude="$HOME/profile" \
+  --iexclude="$HOME/Public/**" \
+  --iexclude="$HOME/pulse-cookie" \
+  --iexclude="$HOME/scripts/**" \
+  --iexclude="$HOME/steam/**" \
+  --iexclude="$HOME/steampath" \
+  --iexclude="$HOME/steampid" \
+  --iexclude="$HOME/templateengine/**" \
+  --iexclude="$HOME/Templates/**" \
+  --iexclude="$HOME/thumbnails/**" \
+  --iexclude="$HOME/tmux.conf" \
+  --iexclude="$HOME/var/**" \
+  --iexclude="$HOME/vim*" \
+  --iexclude="$HOME/vim/**" \
+  --iexclude="**/node_modules/**" \
   --tag "home" \
   --verbose
 
 #restic backup --dry-run \
 #  /home/leo \
-#  --exclude="~/.android/**" \
-#  --exclude="~/.AzureToolsForIntelliJ/**" \
-#  --exclude="~/.bash_history" \
-#  --exclude="~/.bashrc" \
-#  --exclude="~/.bash_profile" \
-#  --exclude="~/.bash_logout" \
-#  --exclude="~/.bash_aliases" \
-#  --exclude="~/.cache/**" \
-#  --exclude="**/Cache/**" \
-#  --exclude="**/cache/**" \
-#  --exclude="**/*.tmp" \
-#  --exclude="**/*.log" \
-#  --exclude="**/.env" \
-#  --exclude="**/.envrc" \
-#  --exclude="~/.copilot/**" \
-#  --exclude="~/Desktop/**" \
-#  --exclude="~/dotfiles/**" \
-#  --exclude="~/.dotnet/**" \
-#  --exclude="~/.gitconfig" \
-#  --exclude="~/.gnupg/**" \
-#  --exclude="~/.gtkrc-2.0" \
-#  --exclude="~/.java/**" \
-#  --exclude="~/.junie/**" \
-#  --exclude="~/.local/share/Steam/**" \
-#  --exclude="~/.local/share/Trash/**" \
-#  --exclude="~/.mozilla/firefox/*.default/cache2/**" \
-#  --exclude="~/.mozilla/firefox/*.default/safebrowsing/**" \
-#  --exclude="~/.mozilla/firefox/*.default/offlinecache/**" \
-#  --exclude="~/.mozilla/firefox/*.default/thumbnails/**" \
-#  --exclude="~/.mozilla/firefox/*.default/startupCache/**" \
-#  --exclude="~/.mozilla/firefox/*.default/security_state/**" \
-#  --exclude="~/.nuget/**" \
-#  --exclude="~/.pki/**" \
-#  --exclude="~/.pulse-cookie" \
-#  --exclude="~/.steam/**" \
-#  --exclude="~/.steampath" \
-#  --exclude="~/.steampid" \
-#  --exclude="~/.templateengine/**" \
-#  --exclude="~/.thumbnails/**" \
-#  --exclude="~/.tmux.conf" \
-#  --exclude="~/.var/**" \
-#  --exclude="~/.viminfo" \
-#  --exclude="~/.vimrc" \
-#  --exclude="~/.vim/**/swap/**" \
-#  --exclude="**/node_modules/**" \
-#  --exclude="**/__pycache__/**" \
-#  --exclude="**/*.pyc" \
-#  --exclude="~/.cargo/registry/**" \
-#  --exclude="~/.cargo/git/**" \
-#  --exclude="~/.rustup/**" \
-#  --exclude="~/.docker/**" \
-#  --exclude="~/.cache/google-chrome/**" \
-#  --exclude="~/.cache/chromium/**" \
+#  --iexclude="$HOME/android/**" \
+#  --iexclude="$HOME/AzureToolsForIntelliJ/**" \
+#  --iexclude="$HOME/bash_history" \
+#  --iexclude="$HOME/bashrc" \
+#  --iexclude="$HOME/bash_profile" \
+#  --iexclude="$HOME/bash_logout" \
+#  --iexclude="$HOME/bash_aliases" \
+#  --iexclude="$HOME/cache/**" \
+#  --iexclude="**/cache/**" \
+#  --iexclude="**/*.tmp" \
+#  --iexclude="**/*.log" \
+#  --iexclude="**/.env" \
+#  --iexclude="**/.envrc" \
+#  --iexclude="$HOME/copilot/**" \
+#  --iexclude="$HOME/Desktop/**" \
+#  --iexclude="$HOME/dotfiles/**" \
+#  --iexclude="$HOME/dotnet/**" \
+#  --iexclude="$HOME/gitconfig" \
+#  --iexclude="$HOME/gnupg/**" \
+#  --iexclude="$HOME/gtkrc-2.0" \
+#  --iexclude="$HOME/java/**" \
+#  --iexclude="$HOME/junie/**" \
+#  --iexclude="$HOME/local/share/Steam/**" \
+#  --iexclude="$HOME/local/share/Trash/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/cache2/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/safebrowsing/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/offlinecache/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/thumbnails/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/startupCache/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/security_state/**" \
+#  --iexclude="$HOME/nuget/**" \
+#  --iexclude="$HOME/pki/**" \
+#  --iexclude="$HOME/pulse-cookie" \
+#  --iexclude="$HOME/steam/**" \
+#  --iexclude="$HOME/steampath" \
+#  --iexclude="$HOME/steampid" \
+#  --iexclude="$HOME/templateengine/**" \
+#  --iexclude="$HOME/thumbnails/**" \
+#  --iexclude="$HOME/tmux.conf" \
+#  --iexclude="$HOME/var/**" \
+#  --iexclude="$HOME/viminfo" \
+#  --iexclude="$HOME/vimrc" \
+#  --iexclude="$HOME/vim/**/swap/**" \
+#  --iexclude="**/node_modules/**" \
+#  --iexclude="**/__pycache__/**" \
+#  --iexclude="**/*.pyc" \
+#  --iexclude="$HOME/cargo/registry/**" \
+#  --iexclude="$HOME/cargo/git/**" \
+#  --iexclude="$HOME/rustup/**" \
+#  --iexclude="$HOME/docker/**" \
+#  --iexclude="$HOME/cache/google-chrome/**" \
+#  --iexclude="$HOME/cache/chromium/**" \
 #  --tag "home" \
 #  --verbose=2
 
