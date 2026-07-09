@@ -2,36 +2,39 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 25, // Waybar height (to be removed for auto height)
+    "height": 20, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 2, // Gaps between modules (4px)
+    "spacing": 15, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
-        "hyprland/mode",
-        "hyprland/scratchpad",
+    //    "hyprland/mode",
+        "hyprland/submap",
+    //    "hyprland/scratchpad",
         "custom/media"
     ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    //"modules-center": [
+    //    "hyprland/window"
+    //],
     "modules-right": [
-        "mpd",
-        "idle_inhibitor",
-        "pulseaudio",
+    //    "mpd",
+    //    "idle_inhibitor",
+    //    "pulseaudio",
+        "wireplumber",
         "network",
-        "power-profiles-daemon",
+    //    "power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
         "backlight",
         "keyboard-state",
-        "hyprland/language",
+    //    "hyprland/language",
         "battery",
-        "battery#bat2",
-        "clock",
-        "tray",
-        "custom/power"
+    //    "battery#bat2",
+        "bluetooth",
+        "clock"
+    //    "tray",
+    //    "custom/power"
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -80,7 +83,7 @@
     //     }
     // },
     "keyboard-state": {
-        "numlock": true,
+    //    "numlock": true,
         "capslock": true,
         "format": "{name} {icon}",
         "format-icons": {
@@ -88,7 +91,14 @@
             "unlocked": ""
         }
     },
-    "hyprland/mode": {
+    "hyprland/language": {
+      	"format": "{}",
+	      "format-en": "US",
+	      "format-es": "ES",
+	      "tooltip": true,
+	      "tooltip-format": "{long}"
+    },
+    "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "hyprland/scratchpad": {
@@ -144,6 +154,16 @@
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
     },
+    "bluetooth": {
+      	"format": " {status}",
+	      "format-connected": " {device_alias}",
+	      "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+	      // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+	      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	      "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	      "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
     "cpu": {
         "format": "{usage}% ",
         "tooltip": false
@@ -195,31 +215,37 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
         "format-linked": "{ifname} (No IP) 󰊗",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}"
     },
-    "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰅶 {icon} {format_source}",
-        "format-muted": "󰅶 {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
-        "format-icons": {
-            "headphone": "",
-            "hands-free": "󰂑",
-            "headset": "󰂑",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
-        },
-        "on-click": "pavucontrol"
+    //"pulseaudio": {
+    //    // "scroll-step": 1, // %, can be a float
+    //    "format": "{volume}% {icon} {format_source}",
+    //    "format-bluetooth": "{volume}% {icon} {format_source}",
+    //    "format-bluetooth-muted": "󰅶 {icon} {format_source}",
+    //    "format-muted": "󰅶 {format_source}",
+    //    "format-source": "{volume}% ",
+    //    "format-source-muted": "",
+    //    "format-icons": {
+    //        "headphone": "",
+    //        "hands-free": "󰂑",
+    //        "headset": "󰂑",
+    //        "phone": "",
+    //        "portable": "",
+    //        "car": "",
+    //        "default": ["", "", ""]
+    //    },
+    //    "on-click": "pavucontrol"
+    //},
+    "wireplumber": {
+      	"format": "{volume}%",
+	      "format-muted": "",
+	      "on-click": "helvum"
     },
     "custom/media": {
         "format": "{icon} {text}",
