@@ -4,4 +4,4 @@ dimensions = { columns = 175, lines = 43 }
 
 # Laptop-specific settings
 [font]
-size = 11.0
+size = 15.0

@@ -7,10 +7,11 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
     output = "eDP-1",
-    mode = "preferred",
-    position = "auto",
-    scale    = "auto",
+    mode = "2880x1800@120.00Hz",
+    position = "0x0",
+    scale = 1.5,
 })
+
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -18,8 +19,9 @@ hl.monitor({
 -- Set programs that you use
 
 local terminal    = "alacritty"
-local fileManager = "dolphin"
+local fileManager = "thunar"
 local menu        = "wofi --show drun"
+
 
 -------------------
 ---- AUTOSTART ----
@@ -28,26 +30,55 @@ local menu        = "wofi --show drun"
 
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
---
-hl.on("hyprland.start", function ()
+-- ==================== AUTOSTART ====================
+-- See https://wiki.hypr.land/Configuring/Basics/Autostart/
+
+hl.on("hyprland.start", function()
+    -- Core services
+    hl.exec_cmd("waybar")
+    hl.exec_cmd("swaync")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
+
+    -- Tray icons (blueman-tray NOT needed, blueman-applet handles it)
+    --hl.exec_cmd("snixembed")
+    hl.exec_cmd("GDK_BACKEND=x11 snixembed")
+    hl.exec_cmd("iwgtk -i")
+    hl.exec_cmd("blueman-applet")
+
+
+    -- Background services
+    hl.exec_cmd("hypridle")
+    hl.exec_cmd("hyprsunset")
+end)
+
+--hl.on("hyprland.start", function ()
 --  hl.exec_cmd(terminal)
 --  hl.exec_cmd("nm-applet")
 --  hl.exec_cmd("waybar & hyprpaper & firefox")
-  hl.exec_cmd("waybar & swaync & hyprpaper")
-end)
+--  hl.exec_cmd("waybar & swaync & hyprpaper")
+--end)
 
 -- hyprpolkitagent
-hl.on("hyprland.start", function ()
-  hl.exec_cmd("systemctl --user start hyprpolkitagent")
-end)
+--hl.on("hyprland.start", function ()
+ -- hl.exec_cmd("systemctl --user start hyprpolkitagent")
+--end)
 
-hl.on("hyprland.start", function()
-    hl.exec_cmd("sleep 0.5")
-end)
+--hl.on("hyprland.start", function()
+    --hl.exec_cmd("sleep 0.5")
+--end)
 
-hl.on("hyprland.start", function()
-    hl.exec_cmd("hypridle & hyprsunset")
-end)
+--hl.on("hyprland.start", function()
+    --hl.exec_cmd("hypridle & hyprsunset")
+--  end)
+
+-- Tray icons
+--hl.on("hyprland.start", function()
+ --   hl.exec_cmd("snixembed &")
+  --  hl.exec_cmd("iwgtk -i &")
+   -- hl.exec_cmd("blueman-tray &")
+--end)
+
 
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
@@ -56,6 +87,7 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+
 
 -----------------------
 ----- PERMISSIONS -----
@@ -73,6 +105,7 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- hl.permission("/usr/(bin|local/bin)/grim", "screencopy", "allow")
 -- hl.permission("/usr/(lib|libexec|lib64)/xdg-desktop-portal-hyprland", "screencopy", "allow")
 -- hl.permission("/usr/(bin|local/bin)/hyprpm", "plugin", "allow")
+
 
 -----------------------
 ---- LOOK AND FEEL ----
@@ -195,6 +228,7 @@ hl.config({
     },
 })
 
+
 ----------------
 ----  MISC  ----
 ----------------
@@ -210,19 +244,15 @@ hl.config({
 ---------------
 ---- INPUT ----
 ---------------
-
 hl.config({
     input = {
-        kb_layout  = "es",
-        kb_variant = ",altgr-intl",
+        kb_layout  = "us,us",
+        kb_variant = ",intl",
+        --kb_options = "grp:alt_shift_toggle",  -- Left Alt + L toggles (see keybindings for kayboard layout)
         kb_model   = "",
-        kb_options = "",
         kb_rules   = "",
-
         follow_mouse = 1,
-
-        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
+        sensitivity = 0,
         touchpad = {
             natural_scroll = false,
         },
@@ -248,6 +278,7 @@ hl.device({
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+--local mainMod = "ALT" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd(terminal))
@@ -263,6 +294,9 @@ hl.bind(mainMod .. " + S", hl.dsp.layout("togglesplit"))    -- dwindle only
 -- Hyprshot
 hl.bind("PRINT", hl.dsp.exec_cmd("hyprshot -m region"))
 hl.bind("SHIFT + PRINT", hl.dsp.exec_cmd("hyprshot -m window"))
+
+-- Switching keyboard layout
+hl.bind("ALT + L", hl.dsp.exec_cmd("hyprctl switchxkblayout current next"))
 
 -- Suspend (doesn't work)
 --hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("systemctl syspend"))
@@ -298,8 +332,12 @@ hl.bind("XF86AudioRaiseVolume",   hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAUL
 hl.bind("XF86AudioLowerVolume",   hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),      { locked = true, repeating = true })
 hl.bind("XF86AudioMute",          hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),     { locked = true, repeating = true })
 hl.bind("XF86AudioMicMute",       hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),   { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessUp",    hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
-hl.bind("XF86MonBrightnessDown",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+--hl.bind("XF86MonBrightnessUp",    hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%+"),                  { locked = true, repeating = true })
+--hl.bind("XF86MonBrightnessDown",  hl.dsp.exec_cmd("brightnessctl -e4 -n2 set 5%-"),                  { locked = true, repeating = true })
+
+-- Screen brightness
+hl.bind("XF86MonBrightnessUp", hl.dsp.exec_cmd("brightnessctl s +5%"))
+hl.bind("XF86MonBrightnessDown", hl.dsp.exec_cmd("brightnessctl s 5%-"))
 
 -- Requires playerctl
 --hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"),       { locked = true })

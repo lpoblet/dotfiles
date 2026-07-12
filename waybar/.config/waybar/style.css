@@ -1,17 +1,18 @@
 @import "mocha.css";
 
 * {
-  font-family: FantasqueSansMono Nerd Font;
-  font-size: 14px;
+  font-family: "JetBrains Mono", "Noto Color Emoji", "FantasqueSansMono Nerd Font", sans-serif;
+  font-size: 13px;
   min-height: 0;
 }
 
 #waybar {
   background: transparent;
   color: @text;
-  margin: 5px 5px;
+  margin: 2px 5px;
 }
 
+/* ==================== WORKSPACES ==================== */
 #workspaces {
   border-radius: 1rem;
   margin: 5px;
@@ -35,23 +36,27 @@
   border-radius: 1rem;
 }
 
-#custom-music,
-#tray,
-#backlight,
+/* ==================== COMMON MODULE STYLES ==================== */
 #clock,
 #battery,
-#pulseaudio,
-#custom-lock,
-#custom-power {
-  background-color: @surface0;
-  padding: 0.5rem 1rem;
-  margin: 5px 0;
+#network,
+#bluetooth,
+#wireplumber,
+#backlight,
+#hyprland-language,
+#tray {
+  padding: 4px 10px;
+  margin: 2px 1px;
+  border-radius: 0;
+  color: @text;
 }
 
+/* ==================== INDIVIDUAL MODULES ==================== */
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
+  border-radius: 1rem 0 0 1rem;
+  margin-left: 1rem;
+  padding-left: 14px;
 }
 
 #battery {
@@ -62,41 +67,46 @@
   color: @green;
 }
 
-#battery.warning:not(.charging) {
+#battery.critical:not(.charging) {
   color: @red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network {
+  color: @sapphire;
+}
+
+#bluetooth {
+  color: @lavender;
+}
+
+#wireplumber {
+  color: @maroon;
 }
 
 #backlight {
   color: @yellow;
 }
 
-#backlight, #battery {
-    border-radius: 0;
-}
-
-#pulseaudio {
-  color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
-}
-
-#custom-music {
+#hyprland-language {
+  padding: 0 12px;
+  font-weight: bold;
   color: @mauve;
-  border-radius: 1rem;
-}
-
-#custom-lock {
-    border-radius: 1rem 0px 0px 1rem;
-    color: @lavender;
-}
-
-#custom-power {
-    margin-right: 1rem;
-    border-radius: 0px 1rem 1rem 0px;
-    color: @red;
 }
 
 #tray {
   margin-right: 1rem;
-  border-radius: 1rem;
+  border-radius: 0 1rem 1rem 0;
+  padding-right: 14px;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes blink {
+  to {
+    color: @red;
+  }
 }
