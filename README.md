@@ -13,9 +13,12 @@ The configurations are organized by application/component. Most of them are stru
 - **Editor**: Neovim (LazyVim), Vim
 - **Shell**: Configurations for Arch, Debian, Fedora, and common aliases
 - **Bar/Notifications**: Waybar, SwayNC
+- **Backups/Automation**: restic backup scripts (`scripts/`) with systemd `.service`/`.timer` units (`systemd/`)
 - **Others**: btop, fastfetch, lazygit, ranger, starship
 
 See [DEPENDENCIES.md](DEPENDENCIES.md) for a full list of system packages required for each component.
+
+> **AI agents**: this repo carries agent instructions. See [AGENTS.md](AGENTS.md) — the single source of truth that `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` point to.
 
 ## Installation
 
@@ -28,7 +31,7 @@ See [DEPENDENCIES.md](DEPENDENCIES.md) for a full list of system packages requir
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/dotfiles.git ~/dotfiles
+   git clone https://github.com/lpoblet/dotfiles.git ~/dotfiles
    cd ~/dotfiles
    ```
 
