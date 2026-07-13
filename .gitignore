@@ -1,4 +1,22 @@
-alacritty-local.toml
-.gitconfig.local
-
+# IDEs and editors
 .idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# AI
+.github/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+ 
+# Project specific
+.junie/
+ 
+ System files
+.DS_Store
+Thumbs.db
+
+# Restic local test/temp files (if any)
+*.bak
