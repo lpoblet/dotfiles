@@ -1,0 +1,147 @@
+#!/bin/bash
+
+# Set environment variables for repository
+# For testing on local SSD:
+# export RESTIC_REPOSITORY="/mnt/backup/home/"
+# export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
+
+# Export package lists
+echo "Exporting package lists..."
+PACKAGE_LIST_DIR="$HOME/backups/package-lists"
+mkdir -p "$PACKAGE_LIST_DIR"
+
+if [ -f /etc/arch-release ]; then
+    echo "Detected Arch Linux"
+    pacman -Qqe > "$PACKAGE_LIST_DIR/all-packages.txt"
+    pacman -Qqen > "$PACKAGE_LIST_DIR/native-packages.txt"
+    pacman -Qqem > "$PACKAGE_LIST_DIR/foreign-packages.txt"
+elif [ -f /etc/debian_version ]; then
+    echo "Detected Debian/Ubuntu"
+    dpkg --get-selections > "$PACKAGE_LIST_DIR/all-packages.txt"
+elif [ -f /etc/fedora-release ]; then
+    echo "Detected Fedora"
+    dnf list installed > "$PACKAGE_LIST_DIR/all-packages.txt"
+else
+    echo "Unknown OS, skipping package list export."
+fi
+
+# Run the backup
+echo "Starting backup at $(date)"
+
+restic backup \
+  $HOME \
+  --iexclude="$HOME/android/**" \
+  --iexclude="$HOME/AzureToolsForIntelliJ/**" \
+  --iexclude="$HOME/bash*" \
+  --iexclude="$HOME/cache/**" \
+  --iexclude="**/cache/**" \
+  --iexclude="**/*.tmp" \
+  --iexclude="**/*.log" \
+  --iexclude="**/.env" \
+  --iexclude="**/.envrc" \
+  --iexclude="$HOME/.copilot/**" \
+  --iexclude="$HOME/Desktop/**" \
+  --iexclude="$HOME/dotfiles/**" \
+  --iexclude="$HOME/dotnet/**" \
+  --iexclude="$HOME/gitconfig" \
+  --iexclude="$HOME/gnopg/**" \
+  --iexclude="$HOME/gtkrc-2.0" \
+  --iexclude="$HOME/java/**" \
+  --iexclude="$HOME/junie/**" \
+  --iexclude="$HOME/local/**" \
+  --iexclude="$HOME/mozilla/**" \
+  --iexclude="$HOME/Music/**" \
+  --iexclude="$HOME/nuget/**" \
+  --iexclude="$HOME/pki/**" \
+  --iexclude="$HOME/profile" \
+  --iexclude="$HOME/Public/**" \
+  --iexclude="$HOME/pulse-cookie" \
+  --iexclude="$HOME/scripts/**" \
+  --iexclude="$HOME/steam/**" \
+  --iexclude="$HOME/steampath" \
+  --iexclude="$HOME/steampid" \
+  --iexclude="$HOME/templateengine/**" \
+  --iexclude="$HOME/Templates/**" \
+  --iexclude="$HOME/thumbnails/**" \
+  --iexclude="$HOME/tmux.conf" \
+  --iexclude="$HOME/var/**" \
+  --iexclude="$HOME/vim*" \
+  --iexclude="$HOME/vim/**" \
+  --iexclude="**/node_modules/**" \
+  --tag "home" \
+  --verbose
+
+#restic backup --dry-run \
+#  $HOME \
+#  --iexclude="$HOME/android/**" \
+#  --iexclude="$HOME/AzureToolsForIntelliJ/**" \
+#  --iexclude="$HOME/bash_history" \
+#  --iexclude="$HOME/bashrc" \
+#  --iexclude="$HOME/bash_profile" \
+#  --iexclude="$HOME/bash_logout" \
+#  --iexclude="$HOME/bash_aliases" \
+#  --iexclude="$HOME/cache/**" \
+#  --iexclude="**/cache/**" \
+#  --iexclude="**/*.tmp" \
+#  --iexclude="**/*.log" \
+#  --iexclude="**/.env" \
+#  --iexclude="**/.envrc" \
+#  --iexclude="$HOME/copilot/**" \
+#  --iexclude="$HOME/Desktop/**" \
+#  --iexclude="$HOME/dotfiles/**" \
+#  --iexclude="$HOME/dotnet/**" \
+#  --iexclude="$HOME/gitconfig" \
+#  --iexclude="$HOME/gnupg/**" \
+#  --iexclude="$HOME/gtkrc-2.0" \
+#  --iexclude="$HOME/java/**" \
+#  --iexclude="$HOME/junie/**" \
+#  --iexclude="$HOME/local/share/Steam/**" \
+#  --iexclude="$HOME/local/share/Trash/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/cache2/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/safebrowsing/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/offlinecache/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/thumbnails/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/startupCache/**" \
+#  --iexclude="$HOME/mozilla/firefox/*.default/security_state/**" \
+#  --iexclude="$HOME/nuget/**" \
+#  --iexclude="$HOME/pki/**" \
+#  --iexclude="$HOME/pulse-cookie" \
+#  --iexclude="$HOME/steam/**" \
+#  --iexclude="$HOME/steampath" \
+#  --iexclude="$HOME/steampid" \
+#  --iexclude="$HOME/templateengine/**" \
+#  --iexclude="$HOME/thumbnails/**" \
+#  --iexclude="$HOME/tmux.conf" \
+#  --iexclude="$HOME/var/**" \
+#  --iexclude="$HOME/viminfo" \
+#  --iexclude="$HOME/vimrc" \
+#  --iexclude="$HOME/vim/**/swap/**" \
+#  --iexclude="**/node_modules/**" \
+#  --iexclude="**/__pycache__/**" \
+#  --iexclude="**/*.pyc" \
+#  --iexclude="$HOME/cargo/registry/**" \
+#  --iexclude="$HOME/cargo/git/**" \
+#  --iexclude="$HOME/rustup/**" \
+#  --iexclude="$HOME/docker/**" \
+#  --iexclude="$HOME/cache/google-chrome/**" \
+#  --iexclude="$HOME/cache/chromium/**" \
+#  --tag "home" \
+#  --verbose=2
+
+# Maintain backups - Keep 7 daily, 4 weekly, and 12 monthly backups
+echo "Pruning old backups..."
+restic forget \
+  --keep-daily 7 \
+  --keep-weekly 4 \
+  --keep-monthly 12 \
+  --prune \
+  --tag "home"
+
+# Delete environment variable
+unset RESTIC_PASSWORD
+
+# Check repository integrity
+echo "Checking repository integrity..."
+restic check
+
+echo "Backup completed at $(date)"
