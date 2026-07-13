@@ -33,6 +33,7 @@ local menu        = "wofi --show drun"
 -- ==================== AUTOSTART ====================
 -- See https://wiki.hypr.land/Configuring/Basics/Autostart/
 
+
 hl.on("hyprland.start", function()
     -- Core services
     hl.exec_cmd("waybar")
@@ -46,10 +47,15 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("iwgtk -i")
     hl.exec_cmd("blueman-applet")
 
-
     -- Background services
     hl.exec_cmd("hypridle")
     hl.exec_cmd("hyprsunset")
+
+    -- Most common apps
+    hl.exec_cmd("firefox")
+    hl.exec_cmd("flatpak run md.obsidian.Obsidian")
+    hl.exec_cmd("alacritty")
+    hl.exec_cmd("flatpak run org.mozilla.thunderbird")
 end)
 
 --hl.on("hyprland.start", function ()
