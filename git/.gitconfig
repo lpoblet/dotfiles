@@ -1,9 +1,11 @@
-[user]
-	email = leandropoblet@gmail.com
-	name = Leandro Poblet
+[include]
+	path = ~/.gitconfig.local
 [core]
 	editor = vim
 [cola]
 	spellcheck = false
 [init]
 	defaultBranch = master
+[user]
+	name = Leandro Poblet
+	email = leandropoblet@gmail.com
