@@ -15,6 +15,8 @@ The configurations are organized by application/component. Most of them are stru
 - **Bar/Notifications**: Waybar, SwayNC
 - **Others**: btop, fastfetch, lazygit, ranger, starship
 
+See [DEPENDENCIES.md](DEPENDENCIES.md) for a full list of system packages required for each component.
+
 ## Installation
 
 ### Prerequisites
