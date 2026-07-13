@@ -2,8 +2,8 @@
 
 # Set environment variables for repository
 # For testing on local SSD:
-# export RESTIC_REPOSITORY="/mnt/backup/home/"
-# export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
+export RESTIC_REPOSITORY="/mnt/backup/home/"
+export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
 
 # Export package lists
 echo "Exporting package lists..."
@@ -137,8 +137,10 @@ restic forget \
   --prune \
   --tag "home"
 
-# Delete environment variable
+# Delete environment variables
 unset RESTIC_PASSWORD
+unset RESTIC_REPOSITORY
+unset RESTIC_PASSWORD_FILE
 
 # Check repository integrity
 echo "Checking repository integrity..."
