@@ -33,7 +33,11 @@ The configurations are organized by application/component. Most of them are stru
 2. Use the provided installation script to symlink the configurations:
    ```bash
    chmod +x install.sh
-   ./install.sh
+   ./install.sh --help    # Show all available options
+   ./install.sh --all     # Install everything (CLI and GUI)
+   ./install.sh --cli     # Install only CLI tools
+   ./install.sh --gui     # Install only GUI tools
+   ./install.sh --dry-run # See what would be changed
    ```
 
 Alternatively, you can manually stow specific configurations:
