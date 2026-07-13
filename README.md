@@ -46,6 +46,10 @@ stow nvim
 stow alacritty
 ```
 
+### Note on Editors
+
+- **Neovim**: This setup uses [LazyVim](https://www.lazyvim.org/). Plugins will be installed automatically on the first run of `nvim`.
+
 ## Structure
 
 The repository follows a structure compatible with GNU Stow:
