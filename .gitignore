@@ -14,9 +14,10 @@ GEMINI.md
 # Project specific
 .junie/
  
- System files
+# System files
 .DS_Store
 Thumbs.db
+.gitconfig.local
 
 # Restic local test/temp files (if any)
 *.bak
