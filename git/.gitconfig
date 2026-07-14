@@ -3,6 +3,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
+	autocrlf = input
 [cola]
 	spellcheck = false
 [init]
