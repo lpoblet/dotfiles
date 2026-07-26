@@ -11,3 +11,5 @@
 [user]
 	name = Leandro Poblet
 	email = leandropoblet@gmail.com
+[pull]
+	rebase = true
