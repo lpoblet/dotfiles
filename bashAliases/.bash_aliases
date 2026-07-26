@@ -11,6 +11,7 @@ alias sb='cd ~/Documents/second-brain/'
 alias in='cd ~/Documents/second-brain/0-Inbox'
 alias conf='cd ~/.config/'
 alias lab='cd ~/source/lab'
+alias cs='cd ~/Documents/cheatsheets'
 
 # df
 alias df='df -h' # human-readable sizes
