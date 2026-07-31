@@ -1,0 +1,32 @@
+#!/bin/bash
+# Script to safely remove ignored files from Git after making changes to .gitignore file
+
+set -e
+
+echo "🔍 Finding ignored files in repository..."
+
+# Count files
+file_count=$(git ls-files --cached --ignored --exclude-standard | wc -l | tr -d ' ')
+
+if [ "$file_count" -eq 0 ]; then
+    echo "✅ No ignored files found in repository."
+    exit 0
+fi
+
+echo "📁 Found $file_count ignored files:"
+git ls-files --cached --ignored --exclude-standard | head -20
+if [ "$file_count" -gt 20 ]; then
+    echo "... and $(($file_count - 20)) more"
+fi
+
+echo ""
+read -p "🗑️  Remove these files from Git (keep local copies)? (y/n) " -n 1 -r
+echo ""
+
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+    echo "Removing files..."
+    git ls-files -z --cached --ignored --exclude-standard | xargs -0 git rm --cached
+    
+    echo "✅ Files removed from Git."
+    echo "📋 Ready to commit. Run: git commit -m 'Remove ignored files'"
+fi
