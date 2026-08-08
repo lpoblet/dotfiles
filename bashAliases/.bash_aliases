@@ -1,5 +1,5 @@
 # safer file operations
-alias rm='rm -i' # interactive remove
+alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
@@ -14,10 +14,10 @@ alias doc='cd ~/Documents/'
 alias down='cd ~/Downloads/'
 
 # df
-alias df='df -h' # human-readable sizes
+alias df='df -h'
 
 # free
-alias free='free -m' # show sizes in MB
+alias free='free -h'
 
 # ls
 alias ll='ls -lah'
@@ -60,17 +60,20 @@ alias pip='pip3'
 alias cm='cmatrix -s' # launch cmatrix
 
 # fastfetch
-alias nf='fastfetch'
 alias ff='fastfetch'
+
+# path
+path() {
+    echo "${PATH//:/$'\n'}"
+}
 
 # Tmux shortcuts
 alias t='tmux attach || tmux new -s main'
 alias tls='tmux ls'
 
 # System & process
-alias update='sudo apt update && sudo apt upgrade -y' # Debian/Ubuntu; change for other distros
-alias top='btop'                                      # if installed
-alias psg='ps aux | grep -i -n'                       # search processes
+alias top='btop'
+alias psg='ps aux | grep -i -n'
 
 # docker
 alias dh='docker --help'
@@ -126,10 +129,10 @@ function drmi {
 alias myip='curl -s https://icanhazip.com'
 
 # Kubernetes
-alias k='kubectl'
-source /etc/bash_completion # not needed on macos
-source <(kubectl completion bash)
-complete -o default -F __start_kubectl k
+#alias k='kubectl'
+#source /etc/bash_completion
+#source <(kubectl completion bash)
+#complete -o default -F __start_kubectl k
 
 # Power Management
 alias sus="systemctl suspend"
