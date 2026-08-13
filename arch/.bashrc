@@ -26,3 +26,12 @@ export PATH="~/scripts:$PATH"
 
 # Vim keys on tty
 #set -o vi
+
+# Remove deltas when installing or updating flatpaks
+flatpak() {
+    if [[ "$1" == "install" || "$1" == "update" ]]; then
+        command flatpak "$1" --no-static-deltas "${@:2}"
+    else
+        command flatpak "$@"
+    fi
+}

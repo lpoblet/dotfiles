@@ -23,7 +23,7 @@ local fileManager = "thunar"
 local menu        = "wofi --show drun"
 local browser     = "firefox"
 local emailClient = "thunderbird"
-local obsidian    = "flatpak run md.obsidian.Obsidian"
+local obsidian    = "flatpak run md.obsidian.Obsidian --password-store=basic"
 
 
 -------------------
