@@ -3,4 +3,4 @@ Description=Obsidian Vault Local Backup Service
 
 [Service]
 Type=oneshot
-ExecStart=%h/scripts/backups/rsync/sb-local-backup
+ExecStart=%h/scripts/backup/rsync/sb-local-backup
