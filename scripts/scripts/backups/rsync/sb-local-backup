@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# --- CONFIGURATION ---
+SOURCE_DIR="$HOME/Documents/second-brain/"            # Update to your actual vault path
+BACKUP_DIR="$HOME/Backups/Documents/second-brain/"    # Update to your backup destination
+
+# Prevent overlapping syncs if a previous run is still active
+LOCKFILE="/tmp/obsidian_backup.lock"
+exec 200>"$LOCKFILE"
+flock -n 200 || { echo "Backup already in progress. Exiting."; exit 0; }
+
+# Ensure destination directory exists
+mkdir -p "$BACKUP_DIR"
+
+# Run rsync
+# -a: archive mode (preserves permissions, timestamps, symlinks)
+# --delete: mirror local deletions
+# --exclude: ignore temporary workspace layout states if desired
+# For exclusions add these lines between rsync -avz line and "$SOURCE_DIR"'s one
+  #--exclude='.obsidian/workspace.json' \
+  #--exclude='.obsidian/workspace-mobile.json' \
+rsync -avz --delete \
+  "$SOURCE_DIR" "$BACKUP_DIR"
+
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Obsidian backup complete."
