@@ -21,3 +21,6 @@ Thumbs.db
 
 # Restic local test/temp files (if any)
 *.bak
+
+# Local config files
+*.local.conf
