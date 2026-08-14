@@ -2,13 +2,16 @@
 set -euo pipefail
 
 # --- CONFIGURATION ---
-SOURCE_DIR="$HOME/Documents/second-brain/"            # Update to your actual vault path
-BACKUP_DIR="$HOME/Backups/Documents/second-brain/"    # Update to your backup destination
+SOURCE_DIR="$HOME/Documents/second-brain/"   # Update to your actual path
+BACKUP_DIR="$HOME/Backups/second-brain/"     # Update to your backup destination
 
 # Prevent overlapping syncs if a previous run is still active
 LOCKFILE="/tmp/obsidian_backup.lock"
 exec 200>"$LOCKFILE"
-flock -n 200 || { echo "Backup already in progress. Exiting."; exit 0; }
+flock -n 200 || {
+  notify-send -u low -i dialogue-warning "Obsidian Backup" "Backup already in progress."
+  exit 0
+}
 
 # Ensure destination directory exists
 mkdir -p "$BACKUP_DIR"
@@ -20,7 +23,13 @@ mkdir -p "$BACKUP_DIR"
 # For exclusions add these lines between rsync -avz line and "$SOURCE_DIR"'s one
   #--exclude='.obsidian/workspace.json' \
   #--exclude='.obsidian/workspace-mobile.json' \
-rsync -avz --delete \
-  "$SOURCE_DIR" "$BACKUP_DIR"
+if rsync -avz --delete \
+  "$SOURCE_DIR" "$BACKUP_DIR"; then
+
+  notify-send -u low -i document-save "Obsidian Backup" "Backup completed successfully!"
+else
+  notify-send -u critical -i dialog-error "Obsidian Backup" "Backup failed! Check journal logs."
+  exit 1
+fi
 
 echo "[$(date '+%Y-%m-%d %H:%M:%S')] Obsidian backup complete."

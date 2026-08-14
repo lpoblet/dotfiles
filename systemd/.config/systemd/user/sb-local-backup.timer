@@ -1,9 +1,9 @@
 [Unit]
-Description=Run Obsidian Backup Every 5 Minutes
+Description=Run Obsidian Backup Every 30 Minutes
 
 [Timer]
-OnBootSec=2min
-OnUnitActiveSec=5min
+OnBootSec=5min
+OnUnitActiveSec=30min
 Persistent=true
 
 [Install]
