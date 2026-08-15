@@ -14,8 +14,9 @@ TimeoutStartSec=12h
 PrivateTmp=true
 ProtectSystem=strict
 ReadWritePaths=/mnt/backups/fedora/home
-StandardOutput=file:/home/leo/restic-home-backup.stdout
-StandardError=file:/home/leo/restic-home-backup.stderr
+StandardOutput=file:/home/leo/backups/restic-home-backup.stdout
+StandardError=file:/home/leo/backups/restic-home-backup.stderr
+NotifyAccess=all
 
 [Install]
 WantedBy=default.target

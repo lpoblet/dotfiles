@@ -3,7 +3,7 @@
 .local/share/Trash/*
 .local/share/*
 .local/state/*
-Backups/*
+backups/second-brain/*
 Downloads/*
 .thumbnails/*
 .direnv/*

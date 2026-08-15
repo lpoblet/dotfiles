@@ -4,10 +4,27 @@
 # For testing on local SSD:
 # export RESTIC_REPOSITORY="/mnt/backup/home/"
 # export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
-source /etc/restic/home.repo.env
+
+# Load environment variables
+if [ -f /etc/restic/home.repo.env ]; then
+    source /etc/restic/home.repo.env
+else
+    echo "ERROR: Environment file /etc/restic/home.repo.env not found!"
+    exit 1
+fi
+
+# Verify variables are set
+if [ -z "$RESTIC_REPOSITORY" ]; then
+    echo "ERROR: RESTIC_REPOSITORY is not set!"
+    exit 1
+fi
 
 # Run the backup
 echo "Starting backup at $(date)"
+systemd-notify --ready --status="Backup in progress..."
+
+# Set DBUS for GUI notifications
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
 #echo "$RESTIC_REPOSITORY"
 #echo "$RESTIC_PASSWORD_FILE"
@@ -16,11 +33,15 @@ echo "Starting backup at $(date)"
 
 # Do the backup - note "backup" comes before $HOME
 #    --dry-run \
-restic -r "$RESTIC_REPOSITORY" \
-    --verbose \
-    --tag "home" \
-    backup "$HOME" \
-    --exclude-file=/home/leo/scripts/backup/restic/restic-home-exclude
+if restic -r "$RESTIC_REPOSITORY" --verbose --tag "home" backup "$HOME" --exclude-file=/home/leo/scripts/backup/restic/restic-home-exclude; then
+    notify-send -u low -i document-save "Restic Home Backup" "Backup completed successfully!" 2>/dev/null || true
+    echo "Backup completed successfully"
+    exit 0
+else
+    notify-send -u critical -i dialog-error "Restic Home Backup" "Backup failed! Check journal logs." 2>/dev/null || true
+    echo "Backup failed!"
+    exit 1
+fi
 
 # Maintain backups - Keep 7 daily, 4 weekly, and 12 monthly backups
 echo "Pruning old backups..."

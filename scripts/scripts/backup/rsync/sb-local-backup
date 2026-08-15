@@ -3,7 +3,7 @@ set -euo pipefail
 
 # --- CONFIGURATION ---
 SOURCE_DIR="$HOME/Documents/second-brain/"   # Update to your actual path
-BACKUP_DIR="$HOME/Backups/second-brain/"     # Update to your backup destination
+BACKUP_DIR="$HOME/backups/second-brain/"     # Update to your backup destination
 
 # Prevent overlapping syncs if a previous run is still active
 LOCKFILE="/tmp/obsidian_backup.lock"
