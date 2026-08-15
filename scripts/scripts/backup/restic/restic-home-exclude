@@ -1,6 +1,7 @@
 # Common exclusions for home backup
 .cache/*
 .local/share/Trash/*
+.local/share/*
 Downloads/*
 .thumbnails/*
 .direnv/*

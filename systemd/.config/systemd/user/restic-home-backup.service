@@ -1,19 +1,21 @@
 [Unit]
 Description=Restic Home Backup Service
-Requires=network-online.target
-After=network-online.target
+After=network.target
+Wants=network.target
 
 [Service]
 Type=oneshot
 User=leo
 EnvironmentFile=/etc/restic/home.repo.env
-ExecStart=/home/leo/scripts/backups/restic-home-backup
+ExecStart=/home/leo/scripts/backup/restic/restic-home-backup
 Nice=19
 IOSchedulingClass=idle
 TimeoutStartSec=12h
 PrivateTmp=true
 ProtectSystem=strict
-ReadWritePaths=/mnt/backup/home
+ReadWritePaths=/mnt/backups/fedora/home
+StandardOutput=file:/home/leo/restic-home-backup.stdout
+StandardError=file:/home/leo/restic-home-backup.stderr
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
