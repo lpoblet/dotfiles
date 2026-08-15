@@ -15,68 +15,29 @@ echo "Starting backup at $(date)"
 # restic -r "$RESTIC_REPOSITORY" snapshots
 
 # Do the backup - note "backup" comes before $HOME
+#    --dry-run \
 restic -r "$RESTIC_REPOSITORY" \
     --verbose \
     --tag "home" \
-    --dry-run \
     backup "$HOME" \
     --exclude-file=/home/leo/scripts/backup/restic/restic-home-exclude
 
-#  --iexclude="$HOME/android/**" \
-#  --iexclude="$HOME/AzureToolsForIntelliJ/**" \
-#  --iexclude="$HOME/bash*" \
-#  --iexclude="$HOME/cache/**" \
-#  --iexclude="**/cache/**" \
-#  --iexclude="**/*.tmp" \
-#  --iexclude="**/*.log" \
-#  --iexclude="**/.env" \
-#  --iexclude="**/.envrc" \
-#  --iexclude="$HOME/.copilot/**" \
-#  --iexclude="$HOME/Desktop/**" \
-#  --iexclude="$HOME/dotfiles/**" \
-#  --iexclude="$HOME/dotnet/**" \
-#  --iexclude="$HOME/gitconfig" \
-#  --iexclude="$HOME/gnopg/**" \
-#  --iexclude="$HOME/gtkrc-2.0" \
-#  --iexclude="$HOME/java/**" \
-#  --iexclude="$HOME/junie/**" \
-#  --iexclude="$HOME/local/**" \
-#  --iexclude="$HOME/mozilla/**" \
-#  --iexclude="$HOME/Music/**" \
-#  --iexclude="$HOME/nuget/**" \
-#  --iexclude="$HOME/pki/**" \
-#  --iexclude="$HOME/profile" \
-#  --iexclude="$HOME/Public/**" \
-#  --iexclude="$HOME/pulse-cookie" \
-#  --iexclude="$HOME/scripts/**" \
-#  --iexclude="$HOME/steam/**" \
-#  --iexclude="$HOME/steampath" \
-#  --iexclude="$HOME/steampid" \
-#  --iexclude="$HOME/templateengine/**" \
-#  --iexclude="$HOME/Templates/**" \
-#  --iexclude="$HOME/thumbnails/**" \
-#  --iexclude="$HOME/tmux.conf" \
-#  --iexclude="$HOME/var/**" \
-#  --iexclude="$HOME/vim*" \
-#  --iexclude="$HOME/vim/**" \
-#  --iexclude="**/node_modules/**" \
-
 # Maintain backups - Keep 7 daily, 4 weekly, and 12 monthly backups
 echo "Pruning old backups..."
-restic forget \
+restic -r "$RESTIC_REPOSITORY" forget \
   --keep-daily 7 \
   --keep-weekly 4 \
   --keep-monthly 12 \
   --prune \
   --tag "home"
 
+# Check repository integrity
+echo "Checking repository integrity..."
+restic -r "$RESTIC_REPOSITORY" check
+
 # Delete environment variables
 unset RESTIC_PASSWORD
 unset RESTIC_REPOSITORY
 unset RESTIC_PASSWORD_FILE
-
-# Check repository integrity
-echo "Checking repository integrity..."
-restic check
 
 echo "Backup completed at $(date)"

@@ -2,6 +2,8 @@
 .cache/*
 .local/share/Trash/*
 .local/share/*
+.local/state/*
+Backups/*
 Downloads/*
 .thumbnails/*
 .direnv/*
@@ -21,6 +23,7 @@ cache/**
 **/.env
 **/.envrc
 .copilot/**
+.tmux/**
 Desktop/**
 dotfiles/**
 dotnet/**
@@ -39,6 +42,7 @@ profile
 Public/**
 pulse-cookie
 scripts/**
+source/**
 steam/**
 steampath
 steampid
