@@ -5,9 +5,23 @@
 # export RESTIC_REPOSITORY="/mnt/backup/system/"
 # export RESTIC_PASSWORD_FILE="/etc/restic/system.repo.key"
 
+# Load environment variables
+if [ -f /etc/restic/home.repo.env ]; then
+    source /etc/restic/home.repo.env
+else
+    echo "ERROR: Environment file /etc/restic/home.repo.env not found!"
+    exit 1
+fi
+
+# Verify variables are set
+if [ -z "$RESTIC_REPOSITORY" ]; then
+    echo "ERROR: RESTIC_REPOSITORY is not set!"
+    exit 1
+fi
+
 # Export package lists
 echo "Exporting package lists..."
-PACKAGE_LIST_DIR="$HOME/backups/package-lists"
+PACKAGE_LIST_DIR="/var/backups/package-lists"
 mkdir -p "$PACKAGE_LIST_DIR"
 
 if [ -f /etc/arch-release ]; then
@@ -20,30 +34,32 @@ elif [ -f /etc/debian_version ]; then
     dpkg --get-selections > "$PACKAGE_LIST_DIR/all-packages.txt"
 elif [ -f /etc/fedora-release ]; then
     echo "Detected Fedora"
-    dnf list installed > "$PACKAGE_LIST_DIR/all-packages.txt"
+    dnf list > "$PACKAGE_LIST_DIR/all-packages.txt"
 else
     echo "Unknown OS, skipping package list export."
 fi
 
-# Run the backup
-echo "Starting backup at $(date)"
+echo "Starting system backup at $(date)"
+systemd-notify --ready --status="System backup in progress..."
 
-restic backup --dry-run \
-    / \
-    --one-file-system \
-    --exclude=/home \
-    --exclude=/proc \
-    --exclude=/sys \
-    --exclude=/dev \
-    --exclude=/run \
-    --exclude=/tmp \
-    --exclude=/var/tmp \
-    --exclude=/var/cache \
-    --exclude=/lost+found \
-    --exclude=/swapfile \
-    --exclude-caches
-    --tag "system" \
-    --verbose
+# Set DBUS for GUI notifications
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+
+#echo "$RESTIC_REPOSITORY"
+#echo "$RESTIC_PASSWORD_FILE"
+# Optional: run this command to check the use of the password
+# restic -r "$RESTIC_REPOSITORY" snapshots
+
+# Run the backup
+if restic -r "$RESTIC_REPOSITORY" --verbose --tag "system" backup --one-file-system / --exclude-file=/usr/local/bin/restic-system-exclude; then
+    notify-send -u low -i document-save "Restic System Backup" "System backup completed successfully!" 2>/dev/null || true
+    echo "System backup completed successfully"
+    exit 0
+else
+    notify-send -u critical -i dialog-error "Restic System Backup" "System backup failed! Check journal logs." 2>/dev/null || true
+    echo "System backup failed!"
+    exit 1
+fi
 
 # Maintain backups - Keep 7 daily, 4 weekly, and 12 monthly backups
 echo "Pruning old backups..."
@@ -54,11 +70,14 @@ restic forget \
   --prune \
   --tag "system"
 
-# Delete environment variable
-unset RESTIC_PASSWORD
-
 # Check repository integrity
 echo "Checking repository integrity..."
-restic check
+restic -r "$RESTIC_REPOSITORY" check
 
-echo "Backup completed at $(date)"
+# Delete environment variables
+unset RESTIC_PASSWORD
+unset RESTIC_REPOSITORY
+unset RESTIC_PASSWORD_FILE
+
+echo "System backup completed at $(date)"
+systemd-notify --ready --status="System backup completed..."

@@ -62,3 +62,4 @@ unset RESTIC_REPOSITORY
 unset RESTIC_PASSWORD_FILE
 
 echo "Backup completed at $(date)"
+systemd-notify --ready --status="Backup completed..."

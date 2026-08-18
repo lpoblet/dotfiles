@@ -3,10 +3,15 @@ Description=Restic System Backup Timer
 Requires=restic-system-backup.service
 
 [Timer]
-OnCalendar=*-*-* 03:00:00
+# Run daily at 2 AM
+OnCalendar=daily
+# Or specific time: OnCalendar=*-*-* 02:00:00
+# Run 10 minutes after startup
+OnStartupSec=10min
+# Don't run if missed (when system was off)
 Persistent=true
-OnWakeup=true
-RandomizedDelaySec=30min
+# Spread load to avoid thundering herd
+RandomizedDelaySec=5min
 
 [Install]
 WantedBy=timers.target

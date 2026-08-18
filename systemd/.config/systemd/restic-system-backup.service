@@ -1,19 +1,22 @@
 [Unit]
 Description=Restic System Backup Service
-Requires=network-online.target
-After=network-online.target
+After=network.target
+Wants=network.target
 
 [Service]
 Type=oneshot
 User=root
-EnvironmentFile=/etc/restic/system.repo.env
-ExecStart=/home/leo/scripts/backups/restic-system-backup
+EnvironmentFile=/etc/restic/home.repo.env
+ExecStart=/usr/local/bin/restic-system-backup
 Nice=19
 IOSchedulingClass=idle
 TimeoutStartSec=12h
 PrivateTmp=true
-ProtectSystem=strict
-ReadWritePaths=/mnt/backup/system
+ProtectSystem=true
+ReadWritePaths=/mnt/backups/fedora
+StandardOutput=file:/var/log/restic-system-backup.stdout
+StandardError=file:/var/log/restic-system-backup.stderr
+NotifyAccess=all
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
