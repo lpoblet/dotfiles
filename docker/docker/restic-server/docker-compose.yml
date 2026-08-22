@@ -1,0 +1,19 @@
+services:
+  restic-server:
+    image: restic/rest-server:latest
+    container_name: restic-server
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - /mnt/backups/arch:/data:z
+    entrypoint: /usr/bin/rest-server
+    command:
+      - --path
+      - /data
+      - --htpasswd-file
+      - /data/.htpasswd
+      - --append-only
+    # Optional: if you ever want to run as a non-root user (e.g., UID 1000),
+    # uncomment the line below AND chown /mnt/backups/arch_remote to that UID.
+    # user: "1000:1000"
