@@ -6,10 +6,10 @@
 # export RESTIC_PASSWORD_FILE="/etc/restic/system.repo.key"
 
 # Load environment variables
-if [ -f /etc/restic/home.repo.env ]; then
-    source /etc/restic/home.repo.env
+if [ -f /etc/restic/restic.remote.repo.env ]; then
+    source /etc/restic/restic.remote.repo.env
 else
-    echo "ERROR: Environment file /etc/restic/home.repo.env not found!"
+    echo "ERROR: Environment file /etc/restic/restic.remote.repo.env not found!"
     exit 1
 fi
 
@@ -57,12 +57,12 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 # restic -r "$RESTIC_REPOSITORY" snapshots
 
 # Run the backup
-if restic -r "$RESTIC_REPOSITORY" --verbose --tag "system" backup --one-file-system / --exclude-file=/usr/local/bin/restic-system-exclude; then
-    notify-send -u low -i document-save "Restic Remote System Backup" "System backup completed successfully!" 2>/dev/null || true
+if restic -r "$RESTIC_REPOSITORY" --verbose --tag "system" backup --one-file-system / --exclude-file="/usr/local/bin/restic-system-exclude"; then
+    notify-send -u low -i document-save "Restic Remote System Backup" "Remote system backup completed successfully!" 2>/dev/null || true
     echo "Remote System backup completed successfully"
     exit 0
 else
-    notify-send -u critical -i dialog-error "Restic Remote System Backup" "System backup failed! Check journal logs." 2>/dev/null || true
+    notify-send -u critical -i dialog-error "Restic Remote System Backup" "Remote system backup failed! Check journal logs." 2>/dev/null || true
     echo "Remote System backup failed!"
     exit 1
 fi
