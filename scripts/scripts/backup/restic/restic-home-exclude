@@ -22,8 +22,11 @@ cache/**
 **/*.log
 **/.env
 **/.envrc
+**/tmux/plugins/**
+.config/chromium/**
 .copilot/**
-.tmux/**
+.var/app/**
+.thunderbird/**
 Desktop/**
 dotfiles/**
 dotnet/**
