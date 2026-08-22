@@ -33,7 +33,7 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
 # Do the backup - note "backup" comes before $HOME
 #    --dry-run \
-if restic -r "$RESTIC_REPOSITORY" --verbose --tag "home" backup "$HOME" --exclude-file=/home/leo/scripts/backup/restic/restic-home-exclude; then
+if restic -r "$RESTIC_REPOSITORY" --verbose --tag "home" backup /home/leo/ --exclude-file=/usr/local/bin/restic-home-exclude; then
     notify-send -u low -i document-save "Restic Home Backup" "Backup completed successfully!" 2>/dev/null || true
     echo "Backup completed successfully"
     exit 0

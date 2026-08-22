@@ -5,17 +5,21 @@ Wants=network.target
 
 [Service]
 Type=oneshot
-User=leo
 EnvironmentFile=/etc/restic/home.repo.env
-ExecStart=/home/leo/scripts/backup/restic/restic-home-backup
+
+# Define fallback environment variables for Restic
+Environment="HOME=/root"
+Environment="RESTIC_CACHE_DIR=/var/cache/restic"
+
+ExecStart=/usr/local/bin/restic-home-backup
 Nice=19
 IOSchedulingClass=idle
 TimeoutStartSec=12h
 PrivateTmp=true
-ProtectSystem=strict
+ProtectSystem=true
 ReadWritePaths=/mnt/backups/fedora
-StandardOutput=file:/home/leo/backups/restic-home-backup.stdout
-StandardError=file:/home/leo/backups/restic-home-backup.stderr
+StandardOutput=file:/var/log/restic-home-backup.stdout
+StandardError=file:/var/log/restic-home-backup.stderr
 NotifyAccess=all
 
 [Install]
