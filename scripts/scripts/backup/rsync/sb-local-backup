@@ -26,10 +26,10 @@ mkdir -p "$BACKUP_DIR"
 if rsync -avz --delete \
   "$SOURCE_DIR" "$BACKUP_DIR"; then
 
-  notify-send -u low -i document-save "Obsidian Backup" "Backup completed successfully!"
+  notify-send -u low -i document-save "Obsidian Backup" "Local Backup completed successfully!"
 else
-  notify-send -u critical -i dialog-error "Obsidian Backup" "Backup failed! Check journal logs."
+  notify-send -u critical -i dialog-error "Obsidian Backup" "Local Backup failed! Check journal logs."
   exit 1
 fi
 
-echo "[$(date '+%Y-%m-%d %H:%M:%S')] Obsidian backup complete."
+echo "[$(date '+%Y-%m-%d %H:%M:%S')] Local Obsidian backup complete."

@@ -34,9 +34,9 @@ if rsync -avz --delete \
   -e ssh \
   "$SOURCE_DIR" "${REMOTE_USER}@${REMOTE_HOST}:${REMOTE_DIR}"; then
 
-  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Remote backup successful."
-  notify-send -u low -i network-transmit-receive "Obsidian Remote Backup" "Synced to ${REMOTE_HOST}"
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] Remote Obsidian backup successful."
+  notify-send -u low -i network-transmit-receive "Remote Obsidian Backup" "Synced to ${REMOTE_HOST}"
 else
-  notify-send -u critical -i dialog-error "Obsidian Remote Backup" "Sync to ${REMOTE_HOST} failed!"
+  notify-send -u critical -i dialog-error "Remote Obsidian Backup" "Sync to ${REMOTE_HOST} failed!"
   exit 1
 fi
