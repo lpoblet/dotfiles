@@ -6,7 +6,7 @@ SOURCE_DIR="$HOME/Documents/second-brain/"
 
 # Remote Target Info (Update these values)
 REMOTE_USER="leo"                               # Username on remote laptop
-REMOTE_HOST="fedora"                            # IP address or local hostname (e.g., laptop.local)
+REMOTE_HOST="X1C3"                              # IP address or local hostname (e.g., laptop.local)
 REMOTE_DIR="/home/leo/Documents/second-brain/"
 CONNECT_TIMEOUT=3                               # Timeout in seconds for reachability check
 
