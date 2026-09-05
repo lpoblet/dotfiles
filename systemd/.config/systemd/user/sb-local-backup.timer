@@ -1,5 +1,5 @@
 [Unit]
-Description=Run Obsidian Backup Every 30 Minutes
+Description=Run Obsidian Local Backup Every 30 Minutes
 
 [Timer]
 OnBootSec=5min
