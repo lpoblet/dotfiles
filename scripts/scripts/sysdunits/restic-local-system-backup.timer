@@ -1,6 +1,6 @@
 [Unit]
-Description=Restic Home Backup Timer
-Requires=restic-home-backup.service
+Description=Restic Local System Backup Timer
+Requires=restic-local-system-backup.service
 
 [Timer]
 # Run daily at 2 AM

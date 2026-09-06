@@ -1,25 +1,25 @@
 [Unit]
-Description=Restic Home Backup Service
+Description=Restic Local System Backup Service
 After=network.target
 Wants=network.target
 
 [Service]
 Type=oneshot
-EnvironmentFile=/etc/restic/home.repo.env
+EnvironmentFile=/etc/restic/local.repo.env
 
 # Define fallback environment variables for Restic
 Environment="HOME=/root"
 Environment="RESTIC_CACHE_DIR=/var/cache/restic"
 
-ExecStart=/usr/local/bin/restic-home-backup
+ExecStart=/usr/local/bin/restic-local-system-backup
 Nice=19
 IOSchedulingClass=idle
 TimeoutStartSec=12h
 PrivateTmp=true
 ProtectSystem=true
-ReadWritePaths=/mnt/backups/fedora
-StandardOutput=file:/var/log/restic-home-backup.stdout
-StandardError=file:/var/log/restic-home-backup.stderr
+ReadWritePaths=/mnt/backups/local
+StandardOutput=file:/var/log/restic-local-system-backup.stdout
+StandardError=file:/var/log/restic-local-system-backup.stderr
 NotifyAccess=all
 
 [Install]

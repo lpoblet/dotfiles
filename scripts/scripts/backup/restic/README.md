@@ -13,9 +13,3 @@ sudo cp <file.*> /usr/local/bin/
 ```shell
 cp <file.*> ~/.local/bin/
 ```
-
-# Notes on sysdunits
-## For those services running as user, symlink them to ~/.config/systemd/user/
-```shell
-ln -s <file.service/timer> ~/.config/systemd/user/
-```

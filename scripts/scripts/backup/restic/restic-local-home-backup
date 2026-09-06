@@ -6,6 +6,12 @@
 # export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
 
 # Load environment variables
+if [ -f ~/backups/restic-local-home-backup.stderr ]; then
+    rm ~/backups/restic-local-home-backup.stderr
+    rm ~/backups/restic-local-home-backup.stdout
+fi
+
+# Load environment variables
 if [ -f /etc/restic/local.repo.env ]; then
     source /etc/restic/local.repo.env
 else
@@ -33,7 +39,7 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
 # Do the backup - note "backup" comes before $HOME
 #    --dry-run \
-if restic -r "$RESTIC_REPOSITORY" --verbose --tag "home" backup /home/leo/ --exclude-file=/usr/local/bin/restic-home-exclude; then
+if restic -r "$RESTIC_REPOSITORY" --dry-run --verbose --tag "home" backup /home/leo/ --exclude-file=/home/leo/.local/bin/restic-home-exclude; then
     notify-send -u low -i document-save "Restic Local Home Backup" "Local Home Backup completed successfully!" 2>/dev/null || true
     echo "Local Home Backup completed successfully"
     exit 0

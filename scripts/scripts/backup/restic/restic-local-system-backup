@@ -5,11 +5,18 @@
 # export RESTIC_REPOSITORY="/mnt/backup/system/"
 # export RESTIC_PASSWORD_FILE="/etc/restic/system.repo.key"
 
+restic-local-system-backup.stderr
+# Removes log files
+if [ -f /var/log/restic-local-system-backup.stderr ]; then
+    rm /var/log/restic-local-system-backup.stderr
+    rm /var/log/restic-local-system-backup.stdout
+fi
+
 # Load environment variables
-if [ -f /etc/restic/home.repo.env ]; then
-    source /etc/restic/home.repo.env
+if [ -f /etc/restic/local.repo.env ]; then
+    source /etc/restic/local.repo.env
 else
-    echo "ERROR: Environment file /etc/restic/home.repo.env not found!"
+    echo "ERROR: Environment file /etc/restic/local.repo.env not found!"
     exit 1
 fi
 
@@ -51,13 +58,13 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 # restic -r "$RESTIC_REPOSITORY" snapshots
 
 # Run the backup
-if restic -r "$RESTIC_REPOSITORY" --verbose --tag "system" backup --one-file-system / --exclude-file=/usr/local/bin/restic-system-exclude; then
-    notify-send -u low -i document-save "Restic System Backup" "System backup completed successfully!" 2>/dev/null || true
-    echo "System backup completed successfully"
+if restic -r "$RESTIC_REPOSITORY" --dry-run --verbose --tag "system" backup --one-file-system / --exclude-file=/usr/local/bin/restic-system-exclude; then
+    notify-send -u low -i document-save "Restic Local System Backup" "Local System backup completed successfully!" 2>/dev/null || true
+    echo "Local System backup completed successfully"
     exit 0
 else
-    notify-send -u critical -i dialog-error "Restic System Backup" "System backup failed! Check journal logs." 2>/dev/null || true
-    echo "System backup failed!"
+    notify-send -u critical -i dialog-error "Local Restic System Backup" "Local System backup failed! Check journal logs." 2>/dev/null || true
+    echo "Local System backup failed!"
     exit 1
 fi
 
@@ -75,9 +82,10 @@ echo "Checking repository integrity..."
 restic -r "$RESTIC_REPOSITORY" check
 
 # Delete environment variables
-unset RESTIC_PASSWORD
 unset RESTIC_REPOSITORY
 unset RESTIC_PASSWORD_FILE
+unset RESTIC_COMPRESSION
+unset RESTIC_HOST
 
-echo "System backup completed at $(date)"
-systemd-notify --ready --status="System backup completed..."
+echo "Local System backup completed at $(date)"
+systemd-notify --ready --status="Local System backup completed..."
