@@ -1,15 +1,21 @@
 # How to use these files
 
-If running these scripts as root, the executables and their matching exclude files in this folder should be copied to /usr/local/bin/
-To do so, just run the following command
+## If running these scripts as root,
+## the executables and their matching exclude files in this folder should be copied to /usr/local/bin/
+## To do so, just run the following command
 ```shell
-suco cp <file.*> /usr/local/bin/
+sudo cp <file.*> /usr/local/bin/
 ```
 
-If running these scripts as user, the executables and their matching exclude files in this folder should be copied to /.local/bin/
-To do so, just run the following command
+## If running these scripts as user,
+## the executables and their matching exclude files in this folder should be copied to ~/.local/bin/
+## To do so, just run the following command
 ```shell
-suco cp <file.*> /.local/bin/
+cp <file.*> ~/.local/bin/
 ```
 
-# Notes
+# Notes on sysdunits
+## For those services running as user, symlink them to ~/.config/systemd/user/
+```shell
+ln -s <file.service/timer> ~/.config/systemd/user/
+```

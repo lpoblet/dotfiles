@@ -2,14 +2,14 @@
 
 # Set environment variables for repository
 # For testing on local SSD:
-# export RESTIC_REPOSITORY="/mnt/backup/home/"
+# export RESTIC_REPOSITORY="/mnt/backups/local/"
 # export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
 
 # Load environment variables
-if [ -f /etc/restic/home.repo.env ]; then
-    source /etc/restic/home.repo.env
+if [ -f /etc/restic/local.repo.env ]; then
+    source /etc/restic/local.repo.env
 else
-    echo "ERROR: Environment file /etc/restic/home.repo.env not found!"
+    echo "ERROR: Environment file /etc/restic/local.repo.env not found!"
     exit 1
 fi
 
@@ -20,8 +20,8 @@ if [ -z "$RESTIC_REPOSITORY" ]; then
 fi
 
 # Run the backup
-echo "Starting backup at $(date)"
-systemd-notify --ready --status="Backup in progress..."
+echo "Starting local home backup at $(date)"
+systemd-notify --ready --status="Local Home Backup in progress..."
 
 # Set DBUS for GUI notifications
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
@@ -34,12 +34,12 @@ export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 # Do the backup - note "backup" comes before $HOME
 #    --dry-run \
 if restic -r "$RESTIC_REPOSITORY" --verbose --tag "home" backup /home/leo/ --exclude-file=/usr/local/bin/restic-home-exclude; then
-    notify-send -u low -i document-save "Restic Home Backup" "Backup completed successfully!" 2>/dev/null || true
-    echo "Backup completed successfully"
+    notify-send -u low -i document-save "Restic Local Home Backup" "Local Home Backup completed successfully!" 2>/dev/null || true
+    echo "Local Home Backup completed successfully"
     exit 0
 else
-    notify-send -u critical -i dialog-error "Restic Home Backup" "Backup failed! Check journal logs." 2>/dev/null || true
-    echo "Backup failed!"
+    notify-send -u critical -i dialog-error "Restic Local Home Backup" "Local Home Backup failed! Check journal logs." 2>/dev/null || true
+    echo "Local Home Backup failed!"
     exit 1
 fi
 
@@ -57,9 +57,11 @@ echo "Checking repository integrity..."
 restic -r "$RESTIC_REPOSITORY" check
 
 # Delete environment variables
-unset RESTIC_PASSWORD
 unset RESTIC_REPOSITORY
 unset RESTIC_PASSWORD_FILE
+unset RESTIC_COMPRESSION
+unset RESTIC_HOST
 
-echo "Backup completed at $(date)"
-systemd-notify --ready --status="Backup completed..."
+
+echo "Local Home Backup completed at $(date)"
+systemd-notify --ready --status="Local Home Backup completed..."
