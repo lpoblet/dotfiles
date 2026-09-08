@@ -6,14 +6,8 @@
 # export RESTIC_PASSWORD_FILE="/etc/restic/home.repo.key"
 
 # Load environment variables
-if [ -f ~/backups/restic-local-home-backup.stderr ]; then
-    rm ~/backups/restic-local-home-backup.stderr
-    rm ~/backups/restic-local-home-backup.stdout
-fi
-
-# Load environment variables
-if [ -f /etc/restic/local.repo.env ]; then
-    source /etc/restic/local.repo.env
+if [ -f /etc/restic/local.home.repo.env ]; then
+    source /etc/restic/local.home.repo.env
 else
     echo "ERROR: Environment file /etc/restic/local.repo.env not found!"
     exit 1
@@ -32,14 +26,12 @@ systemd-notify --ready --status="Local Home Backup in progress..."
 # Set DBUS for GUI notifications
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 
-#echo "$RESTIC_REPOSITORY"
-#echo "$RESTIC_PASSWORD_FILE"
 # Optional: run this command to check the use of the password
 # restic -r "$RESTIC_REPOSITORY" snapshots
 
 # Do the backup - note "backup" comes before $HOME
-#    --dry-run \
-if restic -r "$RESTIC_REPOSITORY" --dry-run --verbose --tag "home" backup /home/leo/ --exclude-file=/home/leo/.local/bin/restic-home-exclude; then
+# Use --dry-run (before --verbose) if needed
+if restic -r "$RESTIC_REPOSITORY" --verbose --tag "home" backup /home/leo/ --exclude-file=/home/leo/.local/bin/restic-home-exclude; then
     notify-send -u low -i document-save "Restic Local Home Backup" "Local Home Backup completed successfully!" 2>/dev/null || true
     echo "Local Home Backup completed successfully"
     exit 0
@@ -67,7 +59,6 @@ unset RESTIC_REPOSITORY
 unset RESTIC_PASSWORD_FILE
 unset RESTIC_COMPRESSION
 unset RESTIC_HOST
-
 
 echo "Local Home Backup completed at $(date)"
 systemd-notify --ready --status="Local Home Backup completed..."
