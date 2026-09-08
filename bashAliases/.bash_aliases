@@ -10,7 +10,7 @@ alias dot='cd ~/dotfiles/'
 alias sb='cd ~/Documents/second-brain/'
 alias conf='cd ~/.config/'
 alias lab='cd ~/source/lab'
-alias doc='cd ~/Documents/'
+alias docs='cd ~/Documents/'
 alias down='cd ~/Downloads/'
 
 # df
