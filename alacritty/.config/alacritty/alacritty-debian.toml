@@ -1,4 +1,0 @@
-# Desktop - bigger screen  
-[window]
-dimensions = { columns = 175, lines = 45 }
-opacity = 0.8

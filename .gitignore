@@ -1,16 +1,23 @@
 # IDEs and editors
 .idea/
-.vscode/
 *.swp
 *.swo
 *~
 tmux/.config/tmux/plugins/*
 
-# AI
-.github/
-AGENTS.md
-CLAUDE.md
-GEMINI.md
+# Secrets & credentials
+*.key
+*.pem
+*.crt
+*.p12
+.env
+*.env
+.secrets
+*.secret
+id_rsa*
+id_ed25519*
+*.priv
+*.privkey
 
 # Project specific
 .junie/
@@ -18,10 +25,8 @@ GEMINI.md
 # System files
 .DS_Store
 Thumbs.db
-.gitconfig.local
-
-# Restic local test/temp files (if any)
-*.bak
 
 # Local config files
 *.local.conf
+*local.toml
+*.gitconfig.local

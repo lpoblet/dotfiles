@@ -8,17 +8,16 @@ The configurations are organized by application/component. Most of them are stru
 
 ### Key Components
 
-- **Window Managers**: Hyprland, i3
+- **Window Managers**: Hyprland, Sway, LXQt
 - **Terminal**: Alacritty, tmux
 - **Editor**: Neovim (LazyVim), Vim
 - **Shell**: Configurations for Arch, Debian, Fedora, and common aliases
+- **File Manager**: superfile (`spf`), Thunar
 - **Bar/Notifications**: Waybar, SwayNC
-- **Backups/Automation**: restic backup scripts (`scripts/`) with systemd `.service`/`.timer` units (`systemd/`)
-- **Others**: btop, fastfetch, lazygit, ranger, starship
+- **Backups/Automation**: Standalone systemd `.service`/`.timer` unit templates (`systemd/`) interfacing with the external scripts repository (`~/scripts`)
+- **System Info / Tools**: btop, fastfetch, lazygit, starship
 
 See [DEPENDENCIES.md](DEPENDENCIES.md) for a full list of system packages required for each component.
-
-> **AI agents**: this repo carries agent instructions. See [AGENTS.md](AGENTS.md) — the single source of truth that `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` point to.
 
 ## Installation
 
@@ -35,21 +34,22 @@ See [DEPENDENCIES.md](DEPENDENCIES.md) for a full list of system packages requir
    cd ~/dotfiles
    ```
 
-2. Use the provided installation script to symlink the configurations:
+2. Symlink the desired configurations using GNU Stow:
    ```bash
-   chmod +x install.sh
-   ./install.sh --help    # Show all available options
-   ./install.sh --all     # Install everything (CLI and GUI)
-   ./install.sh --cli     # Install only CLI tools
-   ./install.sh --gui     # Install only GUI tools
-   ./install.sh --dry-run # See what would be changed
+   stow alacritty
+   stow superfile
+   stow nvim
+   stow tmux
+   stow waybar
    ```
 
-Alternatively, you can manually stow specific configurations:
-```bash
-stow nvim
-stow alacritty
-```
+### Local Overrides
+
+Host-specific settings (such as display resolutions, local credentials, or machine paths) are decoupled from version control using local override files:
+
+- **Alacritty**: Copy `alacritty/.config/alacritty/alacritty-local.toml.example` to `~/.config/alacritty/alacritty-local.toml` (or inside `alacritty/.config/alacritty/`) to customize window dimensions and font size for your display.
+- **Tmux**: Create `~/.config/tmux/tmux.local.conf` for machine-specific tmux options.
+- **Git**: Create `~/.gitconfig.local` for machine-specific user profiles or signing keys.
 
 ### Note on Editors
 

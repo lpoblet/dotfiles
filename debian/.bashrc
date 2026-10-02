@@ -111,4 +111,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH="~/scripts:$PATH"
+# Script's folder
+if [ -d "$HOME/scripts" ]; then
+    export PATH="$HOME/scripts:$PATH"
+fi

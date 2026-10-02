@@ -1,0 +1,13 @@
+# Machine-local Alacritty configuration override
+# Copy this file to alacritty-local.toml to customize settings for this machine.
+
+[window]
+# Desktop - bigger screen
+# dimensions = { columns = 175, lines = 43 }
+
+# Laptop - smaller screen
+dimensions = { columns = 155, lines = 40 }
+
+# Machine-specific font settings
+[font]
+size = 14.0

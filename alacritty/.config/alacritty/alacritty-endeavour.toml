@@ -1,7 +1,0 @@
-# Laptop - smaller screen
-[window]
-dimensions = { columns = 175, lines = 43 }
-
-# Laptop-specific settings
-[font]
-size = 15.0

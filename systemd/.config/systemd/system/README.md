@@ -3,7 +3,7 @@
 The contents of this folder should be copied into /etc/systemd/system/
 To do so, just run the following command
 ```shell
-suco cp <file(s))> /etc/systemd/system/
+sudo cp <file(s)> /etc/systemd/system/
 ```
 
 # Note

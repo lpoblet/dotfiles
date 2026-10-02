@@ -1,6 +1,0 @@
-[Unit]
-Description=Obsidian Vault Remote Backup Service over SSH
-
-[Service]
-Type=oneshot
-ExecStart=%h/scripts/backup/rsync/sb-remote-backup

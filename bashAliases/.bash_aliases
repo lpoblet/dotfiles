@@ -8,8 +8,10 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias dot='cd ~/dotfiles/'
 alias sb='cd ~/Documents/second-brain/'
+alias zk='cd ~/Documents/zettlekasten/'
 alias conf='cd ~/.config/'
 alias lab='cd ~/source/lab'
+alias sc='cd ~/scripts/'
 alias docs='cd ~/Documents/'
 alias down='cd ~/Downloads/'
 
@@ -18,6 +20,9 @@ alias df='df -h'
 
 # free
 alias free='free -h'
+
+# cat
+alias cat='bat'
 
 # ls
 alias ll='ls -lah'
@@ -34,8 +39,8 @@ alias fgrep='fgrep --color=auto'
 alias v='vim'
 alias nv='nvim'
 
-# ranger
-alias r='ranger'
+# file manager
+alias f='spf'
 
 # source bashrc
 alias src='source ~/.bashrc'

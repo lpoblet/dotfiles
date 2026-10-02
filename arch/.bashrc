@@ -22,7 +22,9 @@ fi
     . /usr/share/bash-completion/bash_completion
 
 # Script's folder
-export PATH="~/scripts:$PATH"
+if [ -d "$HOME/scripts" ]; then
+    export PATH="$HOME/scripts:$PATH"
+fi
 
 # Vim keys on tty
 #set -o vi
