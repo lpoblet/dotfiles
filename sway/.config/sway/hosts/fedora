@@ -1,5 +1,5 @@
 output eDP-1 mode 1920x1080@60Hz scale 1
 
 input type:keyboard {
-  xkb_layout "es"
+  xkb_layout "en"
 }
