@@ -1,0 +1,93 @@
+{
+    "height": 35,
+    "spacing": 4,
+    "modules-left": [
+        "sway/workspaces"
+    ],
+    "modules-right": [
+        "sway/language",    // Far right
+        "backlight",            // Second from right
+        "wireplumber",          // Third from right
+        "bluetooth",            // Fourth from right
+        "network",              // Fifth from right
+        "battery",              // Sixth from right
+        "clock",                // Seventh from right (leftmost of right block)
+        "tray"                  // Very end (rightmost)
+    ],
+
+    // ==================== MODULE CONFIGURATIONS ====================
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "warp-on-scroll": false,
+        "format": "{name}",
+        "format-icons": {
+            "1": "1",
+            "2": "2",
+            "3": "3",
+            "4": "4",
+            "5": "5"
+        }
+    },
+
+    "sway/language": {
+        "format": "{}",
+        "format-us": "🇺🇸",
+        "format-intl": "🌐",
+        "keyboard-name": "at-translated-set-2-keyboard"
+    },
+
+    "wireplumber": {
+        "format": "{volume}% ",
+        "on-click": "helvum",
+        "scroll-step": 2
+    },
+
+    "network": {
+        "format-wifi": "{signalStrength}% ",
+        "format-ethernet": "{ipaddr} 󰊗",
+        "format-disconnected": "⚠",
+        "tooltip-format": "{ifname} via {gwaddr}"
+    },
+
+    "backlight": {
+        "format": "{percent}% 󰃟",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-icons": ["", "", "", "", ""],
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        }
+    },
+
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "on-click": "blueman-manager",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}"
+    },
+
+    "tray": {
+        "spacing": 8,
+        "show-passive": true,
+        "icons": {
+            "blueman": "bluetooth"
+        }
+    },
+
+    "clock": {
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    }
+}

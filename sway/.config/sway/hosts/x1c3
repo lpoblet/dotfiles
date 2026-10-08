@@ -1,5 +1,18 @@
+# --- Host-Specific Output ---
 output eDP-1 mode 1920x1080@60Hz scale 1
 
+# --- Host-Specific Background image ---
+output * bg ~/Pictures/bg/arch.jpg fill
+
+# --- Host-Specific Keyboard Rules ---
 input type:keyboard {
-  xkb_layout "es"
+    xkb_layout "es"
+}
+
+# --- Host-Specific Touchpad Rules ---
+input type:touchpad {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
 }
