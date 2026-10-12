@@ -1,15 +1,15 @@
-# --- Host-Specific Output ---
+# --- Screen resolution and scaling ---
 output eDP-1 mode 1920x1080@60Hz scale 1
 
-# --- Host-Specific Background image ---
+# --- Wallpaper image ---
 output * bg ~/Pictures/bg/arch.jpg fill
 
-# --- Host-Specific Keyboard Rules ---
+# --- Keyboard Settings ---
 input type:keyboard {
     xkb_layout "es"
 }
 
-# --- Host-Specific Touchpad Rules ---
+# --- Touchpad Settings ---
 input type:touchpad {
     dwt enabled
     tap enabled
