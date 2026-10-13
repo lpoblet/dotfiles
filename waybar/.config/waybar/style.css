@@ -1,7 +1,7 @@
 @import "mocha.css";
 
 * {
-  font-family: "JetBrains Mono", "Noto Color Emoji", "FantasqueSansMono Nerd Font", sans-serif;
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", "Noto Color Emoji", "FantasqueSansMono Nerd Font", sans-serif;
   font-size: 13px;
   min-height: 0;
 }
