@@ -1,5 +1,5 @@
 # --- Screen resolution and scaling ---
-output eDP-1 mode 2880x1800@120Hz scale 2
+output eDP-1 mode 2880x1800@120Hz scale 1
 
 # --- Wallpaper image ---
 output * bg ~/.local/share/wallpapers/Abstract 4K No Logo.png fill
@@ -16,3 +16,6 @@ input type:touchpad {
     natural_scroll enabled
     middle_emulation enabled
 }
+
+# --- Waybar ---
+exec waybar -c ~/.config/waybar/config-fedora.jsonc -s ~/.config/waybar/style-fedora.css

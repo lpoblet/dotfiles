@@ -2,9 +2,9 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 45, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 4, // Gaps between modules (4px)
+    "spacing": 10, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces"
@@ -41,7 +41,7 @@
          "format": "{name}: {icon}",
          "format-icons": {
              "1": "",
-             "2": "",
+             "2": "",
              "3": "",
              "4": "",
              "5": "",
@@ -187,7 +187,7 @@
       }
     },
     "network": {
-        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "interface": "wlp*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
