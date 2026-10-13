@@ -1,0 +1,126 @@
+@import "mocha.css";
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", "Noto Color Emoji", "FantasqueSansMono Nerd Font", sans-serif;
+  font-size: 20px;
+  min-height: 0;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+  margin: 2px 5px;
+}
+
+/* Add space between all modules
+#modules-left > widget,
+#modules-center > widget,
+#modules-right > widget {
+    padding: 0 5px;
+    margin: 0 2px;
+}*/
+
+/* Target every module inside the bar */
+window#waybar box > widget > * {
+    margin: 0 4px; /* Space outside each module */
+    padding: 0 8px; /* Space inside each module */
+}
+
+/* ==================== WORKSPACES ==================== */
+#workspaces {
+  border-radius: 1rem;
+  margin: 5px;
+  background-color: @surface0;
+  margin-left: 1rem;
+}
+
+#workspaces button {
+  color: @lavender;
+  border-radius: 1rem;
+  padding: 0.4rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+  border-radius: 1rem;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+  border-radius: 1rem;
+}
+
+/* ==================== COMMON MODULE STYLES ==================== */
+#clock,
+#battery,
+#network,
+#bluetooth,
+#wireplumber,
+#backlight,
+#hyprland-language,
+#tray {
+  padding: 4px 10px;
+  margin: 2px 1px;
+  border-radius: 0;
+  color: @text;
+}
+
+/* ==================== INDIVIDUAL MODULES ==================== */
+#clock {
+  color: @blue;
+  border-radius: 1rem 0 0 1rem;
+  margin-left: 1rem;
+  padding-left: 14px;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.critical:not(.charging) {
+  color: @red;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#network {
+  color: @sapphire;
+}
+
+#bluetooth {
+  color: @lavender;
+}
+
+#wireplumber {
+  color: @maroon;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#hyprland-language {
+  padding: 0 12px;
+  font-weight: bold;
+  color: @mauve;
+}
+
+#tray {
+  margin-right: 1rem;
+  border-radius: 0 1rem 1rem 0;
+  padding-right: 14px;
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes blink {
+  to {
+    color: @red;
+  }
+}

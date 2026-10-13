@@ -16,3 +16,6 @@ input type:touchpad {
     natural_scroll enabled
     middle_emulation enabled
 }
+
+# --- Waybar ---
+exec waybar -c ~/.config/waybar/config-x1c3.jsonc -s ~/.config/waybar/style-x1c3.css
