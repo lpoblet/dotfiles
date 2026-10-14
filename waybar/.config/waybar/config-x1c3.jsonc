@@ -29,6 +29,7 @@
         "sway/language",
         "battery",
         //"battery#bat2",
+        "bluetooth",
         "clock"
         //"tray",
         //"custom/power"
@@ -237,5 +238,12 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
-    }
+    },
+    "bluetooth": {
+      "format": "",
+      "format-connected": " {device_alias}",
+      "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "on-click": "blueman-manager"
+}
 }
