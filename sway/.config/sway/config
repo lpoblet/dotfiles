@@ -187,6 +187,13 @@ exec swayidle -w \
 
     # Optional: Hide window titlebars (clean minimalist look)
     default_border pixel 2
+
+    gaps top 10
+    gaps bottom 10
+    gaps left 15
+    gaps right 15
+
+    smart_borders on
 #
 # Scratchpad:
 #
