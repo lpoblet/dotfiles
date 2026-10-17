@@ -2,9 +2,9 @@
 {
     // "layer": "top", // Waybar at top layer
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 45, // Waybar height (to be removed for auto height)
+    //"height": 45, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-    "spacing": 10, // Gaps between modules (4px)
+    "spacing": 15, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "sway/workspaces"
@@ -18,18 +18,18 @@
     "modules-right": [
         //"mpd",
         "idle_inhibitor",
-        "pulseaudio",
-        "network",
         //"power-profiles-daemon",
         "cpu",
         "memory",
         "temperature",
-        "backlight",
         //"keyboard-state",
-        "sway/language",
-        "battery",
         //"battery#bat2",
         "bluetooth",
+        "backlight",
+        "sway/language",
+        "battery",
+        "network",
+        "pulseaudio",
         "clock"
         //"tray",
         //"custom/power"
@@ -126,7 +126,7 @@
     },
     "tray": {
         // "icon-size": 21,
-        "spacing": 10,
+        "spacing": 15,
          "icons": {
            "blueman": "bluetooth",
         //   "TelegramDesktop": "$HOME/.local/share/icons/hicolor/16x16/apps/telegram.png"
@@ -189,7 +189,8 @@
     },
     "network": {
         "interface": "wlan*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
+        //"format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "{signalStrength}% ",
         "format-ethernet": "{ipaddr}/{cidr} 󰊗",
         "tooltip-format": "{ifname} via {gwaddr} 󰊗",
         "format-linked": "{ifname} (No IP) 󰊗",
@@ -243,7 +244,8 @@
       "format": "",
       "format-connected": " {device_alias}",
       "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      //"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "tooltip-format": "{controller_alias}\n\n{num_connections} connected",
       "on-click": "blueman-manager"
 }
 }

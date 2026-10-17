@@ -1,8 +1,10 @@
-# --- Screen resolution and scaling ---
-output eDP-1 mode 1920x1080@60Hz scale 1
+output eDP-1 {
+  # --- Screen resolution and scaling ---
+  mode 1920x1080@60Hz scale 1
 
-# --- Wallpaper image ---
-output * bg ~/Pictures/bg/arch.jpg fill
+  # --- Wallpaper image ---
+  bg ~/Pictures/bg/arch.jpg fill
+}
 
 # --- Keyboard Settings ---
 input type:keyboard {

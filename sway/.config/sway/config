@@ -170,10 +170,14 @@ exec swayidle -w \
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    #bindsym $mod+a focus parent
 
     # Window borders
     #default_border none
+    # Optional: Hide window titlebars (clean minimalist look)
+    default_border pixel 2
+    # Optional: removes borders when there's only one window
+    smart_borders on
 
     # --- Gaps Configuration ---
     # Space between windows
@@ -185,15 +189,11 @@ exec swayidle -w \
     # Optional: Only show gaps when there is more than one window
     smart_gaps off
 
-    # Optional: Hide window titlebars (clean minimalist look)
-    default_border pixel 2
-
     gaps top 10
     gaps bottom 10
     gaps left 15
     gaps right 15
 
-    smart_borders on
 #
 # Scratchpad:
 #
@@ -201,11 +201,11 @@ exec swayidle -w \
     # You can send windows there and get them back later.
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+minus move scratchpad
+    #bindsym $mod+Shift+minus move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+    #bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -220,10 +220,10 @@ mode "resize" {
     bindsym $right resize grow width 10px
 
     # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
+    #bindsym Left resize shrink width 10px
+    #bindsym Down resize grow height 10px
+    #bindsym Up resize shrink height 10px
+    #bindsym Right resize grow width 10px
 
     # Return to default mode
     bindsym Return mode "default"
@@ -276,5 +276,11 @@ bar {
 exec systemctl --user start hyprpolkitagent
 exec mako
 exec blueman-applet
+
+# Notification Daemon
+exec swaync
+
+# Toggle control center
+bindsym $mod+Shift+n exec swaync-client -t -sw
 
 include /etc/sway/config.d/*
