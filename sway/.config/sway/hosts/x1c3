@@ -6,7 +6,10 @@ output * bg ~/Pictures/bg/arch.jpg fill
 
 # --- Keyboard Settings ---
 input type:keyboard {
-    xkb_layout "es"
+    xkb_layout "latam,us"
+    xkb_variant ",intl"
+    xkb_numlock enabled
+    xkb_options grp:shifts_toggle,caps:escape
 }
 
 # --- Touchpad Settings ---
