@@ -1,13 +1,19 @@
-# --- Screen resolution and scaling ---
-output eDP-1 mode 2880x1800@120Hz scale 1
+output eDP-1 {
+  # --- Screen resolution and scaling ---
+  mode 2880x1800@120Hz scale 1
 
-# --- Wallpaper image ---
-output * bg ~/.local/share/wallpapers/Abstract 4K No Logo.png fill
+  # --- Wallpaper image ---
+  bg ~/.local/share/wallpapers/Abstract 4K No Logo.png fill
+}
 
 # --- Keyboard Settings ---
-#input type:keyboard {
-#    xkb_layout "en"
-#}
+input type:keyboard {
+    xkb_layout "us"
+    xkb_variant ",intl"
+    xkb_numlock enabled
+    #xkb_options grp:shifts_toggle,caps:escape
+    xkb_options grp:shifts_toggle
+}
 
 # --- Touchpad Settings ---
 input type:touchpad {
