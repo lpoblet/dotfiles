@@ -247,5 +247,12 @@
       //"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
       "tooltip-format": "{controller_alias}\n\n{num_connections} connected",
       "on-click": "blueman-manager"
-}
+    },
+    "sway/language": {
+      // This displays "us" normally, and "us intl" when the variant is active
+      "format": "{short} {variant}",
+
+      // Optional: add a tooltip showing the full long name
+      "tooltip-format": "{long}"
+    }
 }
