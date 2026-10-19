@@ -13,7 +13,7 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 #set $menu wmenu-run
-set $menu wofi --show=drun
+set $menu wofi --show=drun -I
 
 # Host specific configurations are marked as #MOVED_TO_HOST_FILE
 # and settings should be modified there instead
