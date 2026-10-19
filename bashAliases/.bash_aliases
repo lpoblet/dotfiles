@@ -62,7 +62,10 @@ alias python='python3'
 alias pip='pip3'
 
 # cmatrix
-alias cm='cmatrix -s' # launch cmatrix
+alias cm='cmatrix -s'
+
+# sl
+alias sl='sl -acdeFG5'
 
 # fastfetch
 alias ff='fastfetch'

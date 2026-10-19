@@ -22,6 +22,7 @@
         "cpu",
         "memory",
         "temperature",
+        "custom/notification",
         //"keyboard-state",
         //"battery#bat2",
         "bluetooth",
@@ -29,7 +30,6 @@
         "sway/language",
         "battery",
         "network",
-        "custom/notification",
         "pulseaudio",
         "clock"
         //"tray",
