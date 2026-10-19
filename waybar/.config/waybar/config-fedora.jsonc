@@ -27,6 +27,7 @@
         "bluetooth",
         "backlight",
         "sway/language",
+        "custom/notification",
         "battery",
         "network",
         "pulseaudio",
@@ -247,6 +248,26 @@
       //"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
       "tooltip-format": "{controller_alias}\n\n{num_connections} connected",
       "on-click": "blueman-manager"
+    },
+    "custom/notification": {
+      "tooltip": true,
+      "format": "<span size='16pt'>{icon}</span>",
+      "format-icons": {
+        "notification": "󱅫",
+        "none": "󰂜",
+        "dnd-notification": "󰂠",
+        "dnd-none": "󰪓",
+        "inhibited-notification": "󰂛",
+        "inhibited-none": "󰪑",
+        "dnd-inhibited-notification": "󰂛",
+        "dnd-inhibited-none": "󰪑"
+      },
+      "return-type": "json",
+      "exec-if": "which swaync-client",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client -t -sw",
+      "on-click-right": "swaync-client -d -sw",
+      "escape": true
     },
     "sway/language": {
       // This displays "us" normally, and "us intl" when the variant is active

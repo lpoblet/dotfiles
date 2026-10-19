@@ -268,5 +268,12 @@
       "on-click": "swaync-client -t -sw",
       "on-click-right": "swaync-client -d -sw",
       "escape": true
+    },
+    "sway/language": {
+      // This displays "us" normally, and "us intl" when the variant is active
+      "format": "{short} {variant}",
+
+      // Optional: add a tooltip showing the full long name
+      "tooltip-format": "{long}"
     }
 }

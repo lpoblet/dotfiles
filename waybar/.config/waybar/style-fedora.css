@@ -2,14 +2,14 @@
 
 * {
   font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", "Noto Color Emoji", "FantasqueSansMono Nerd Font", sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   min-height: 0;
 }
 
 #waybar {
   background: transparent;
   color: @text;
-  margin: 2px 5px;
+  margin: 2px 2px;
 }
 
 /* Add space between all modules
@@ -22,8 +22,12 @@
 
 /* Target every module inside the bar */
 window#waybar box > widget > * {
-    margin: 0 4px; /* Space outside each module */
-    padding: 0 8px; /* Space inside each module */
+    margin: 0 2px; /* Space outside each module */
+    padding: 0 4px; /* Space inside each module */
+}
+
+#custom-notification {
+  font-family: "NotoSansMono Nerd Font";
 }
 
 /* ==================== WORKSPACES ==================== */
