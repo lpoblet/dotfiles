@@ -25,7 +25,7 @@ auto_check_update = true
 #-- cd on quit
 # Should we cd the shell to the last directory open in superfile when the
 # program exits? 
-cd_on_quit = false
+cd_on_quit = true
 
 #-- File Preview
 # Should we open a file preview by default whenever selection-hovering over a
@@ -39,7 +39,7 @@ show_image_preview = true
 
 #-- File Info Footer
 # Should we display a footer in the file panel that provides more file information?
-show_panel_footer_info = true
+show_panel_footer_info = false
 
 #-- Default Directory
 # The initial path that the file panel should navigate to when superfile is
@@ -99,7 +99,7 @@ theme = "everforest-dark-medium"
 
 #-- Code Previewer
 # Whether to use the builtin syntax highlighting with chroma or use bat. Values: "" for builtin chroma, "bat" for bat
-code_previewer = "bat"
+code_previewer = "nvim"
 
 #-- Nerd Fonts Support
 # Whether to enable support for Nerd Fonts symbols.
@@ -134,7 +134,7 @@ sidebar_width = 20
 #-- Sidebar Section Order
 # Order of sidebar sections (valid values: "home", "pinned", "disks")
 # Only enabled sections will be displayed
-sidebar_sections = ["home", "pinned", "disks"]
+sidebar_sections = ["home", "disks"]
 
 #-- Border
 # Make sure to add strings that are exactly one character wide!
@@ -160,7 +160,7 @@ border_middle_right = '┤'
 
 #-- Detailed Metadata
 # Requires: exiftool
-metadata = false
+metadata = true
 
 #-- MD5 Checksum Generation
 # Requires: md5sum
