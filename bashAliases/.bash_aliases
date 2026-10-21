@@ -65,7 +65,7 @@ alias pip='pip3'
 alias cm='cmatrix -s'
 
 # sl
-alias sl='sl -acdeFG5'
+alias sl='sl -aceF5'
 
 # fastfetch
 alias ff='fastfetch'
